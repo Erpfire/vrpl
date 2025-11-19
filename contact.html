@@ -6,10 +6,7 @@
   <meta name="description" content="Contact VRPL - Get in touch for partnerships, investments, and inquiries about our plasma gasification technology">
   <title>Contact Us - VRPL | Varanasi Recyclers Private Limited</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/global.css">
@@ -17,6 +14,318 @@
   <link rel="stylesheet" href="css/navigation.css">
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Contact-specific styles */
+    .contact-hero {
+      min-height: 50vh;
+      position: relative;
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-xl);
+      margin: var(--space-3xl) 0;
+    }
+
+    .contact-card {
+      background: linear-gradient(145deg, var(--steel-gray), #3A3A3A);
+      border: 1px solid var(--copper-medium);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--copper-medium), var(--light-green));
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--light-green);
+      box-shadow: 0 0 30px rgba(167, 200, 161, 0.3);
+    }
+
+    .contact-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-lg);
+      background: linear-gradient(135deg, rgba(156, 106, 74, 0.2), rgba(167, 200, 161, 0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--copper-medium);
+      transition: all var(--transition-base);
+    }
+
+    .contact-card:hover .contact-icon-wrapper {
+      border-color: var(--light-green);
+      box-shadow: 0 0 20px rgba(167, 200, 161, 0.5);
+      transform: scale(1.1);
+    }
+
+    .contact-icon-wrapper svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact-card h3 {
+      color: var(--copper-light);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-md);
+      font-weight: var(--weight-semibold);
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+      line-height: 1.6;
+    }
+
+    .contact-link {
+      display: inline-block;
+      color: var(--light-green);
+      text-decoration: none;
+      font-weight: var(--weight-semibold);
+      padding: var(--space-sm) var(--space-lg);
+      border: 2px solid var(--moss-green);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+      margin-top: var(--space-sm);
+    }
+
+    .contact-link:hover {
+      background: var(--moss-green);
+      color: var(--text-primary);
+      box-shadow: 0 0 20px rgba(73, 109, 83, 0.5);
+    }
+
+    /* Form Styles */
+    .contact-form-section {
+      background: linear-gradient(135deg, #1C1C1C 0%, #2E2E2E 50%, #1C3B2C 100%);
+      padding: var(--space-4xl) 0;
+      position: relative;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(46, 46, 46, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(156, 106, 74, 0.3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3xl);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .form-header h2 {
+      font-size: var(--text-3xl);
+      color: var(--copper-light);
+      margin-bottom: var(--space-md);
+      font-weight: var(--weight-bold);
+    }
+
+    .form-header p {
+      color: var(--text-secondary);
+      font-size: var(--text-lg);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      color: var(--copper-light);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-sm);
+      font-size: var(--text-sm);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(28, 28, 28, 0.5);
+      border: 2px solid rgba(156, 106, 74, 0.3);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      color: var(--text-primary);
+      font-size: var(--text-base);
+      font-family: inherit;
+      transition: all var(--transition-base);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--light-green);
+      box-shadow: 0 0 0 3px rgba(167, 200, 161, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .form-submit {
+      margin-top: var(--space-lg);
+      text-align: center;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--copper-medium), var(--copper-light));
+      border: none;
+      padding: 18px 60px;
+      color: var(--text-primary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(167, 200, 161, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .submit-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .submit-btn:hover {
+      box-shadow: 0 0 24px rgba(167, 200, 161, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .submit-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      background: rgba(73, 109, 83, 0.2);
+      border: 2px solid var(--light-green);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+      text-align: center;
+    }
+
+    .form-success.show {
+      display: block;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-success h3 {
+      color: var(--light-green);
+      margin-bottom: var(--space-sm);
+    }
+
+    .form-success p {
+      color: var(--text-secondary);
+    }
+
+    /* Info section */
+    .contact-info-section {
+      background: var(--background-dark);
+      padding: var(--space-3xl) 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+    }
+
+    .info-item {
+      text-align: center;
+    }
+
+    .info-item h4 {
+      color: var(--copper-light);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-sm);
+      font-weight: var(--weight-semibold);
+    }
+
+    .info-item p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .info-item a {
+      color: var(--light-green);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .info-item a:hover {
+      color: var(--copper-light);
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: var(--space-xl);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -52,60 +361,34 @@
       <button class="overlay-close" id="overlayClose" aria-label="Close menu">
         <span class="close-icon">×</span>
       </button>
-
       <nav class="overlay-nav">
         <ul class="overlay-menu-list">
           <li class="overlay-menu-item" data-image="assets/images/overlay/home.jpg">
-            <a href="index.html" class="overlay-link">
-              <span class="link-number">01</span>
-              <span class="link-text">Home</span>
-            </a>
+            <a href="index.html" class="overlay-link"><span class="link-number">01</span><span class="link-text">Home</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/about.jpg">
-            <a href="about.html" class="overlay-link">
-              <span class="link-number">02</span>
-              <span class="link-text">About Us</span>
-            </a>
+            <a href="about.html" class="overlay-link"><span class="link-number">02</span><span class="link-text">About Us</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/technology.jpg">
-            <a href="technology.html" class="overlay-link">
-              <span class="link-number">03</span>
-              <span class="link-text">Technology</span>
-            </a>
+            <a href="technology.html" class="overlay-link"><span class="link-number">03</span><span class="link-text">Technology</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/phases.jpg">
-            <a href="phases.html" class="overlay-link">
-              <span class="link-number">04</span>
-              <span class="link-text">Project Phases</span>
-            </a>
+            <a href="phases.html" class="overlay-link"><span class="link-number">04</span><span class="link-text">Project Phases</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/impact.jpg">
-            <a href="impact.html" class="overlay-link">
-              <span class="link-number">05</span>
-              <span class="link-text">Environmental Impact</span>
-            </a>
+            <a href="impact.html" class="overlay-link"><span class="link-number">05</span><span class="link-text">Environmental Impact</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/government.jpg">
-            <a href="government.html" class="overlay-link">
-              <span class="link-number">06</span>
-              <span class="link-text">Government Alignment</span>
-            </a>
+            <a href="government.html" class="overlay-link"><span class="link-number">06</span><span class="link-text">Government Alignment</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/training.jpg">
-            <a href="training.html" class="overlay-link">
-              <span class="link-number">07</span>
-              <span class="link-text">Training & Awareness</span>
-            </a>
+            <a href="training.html" class="overlay-link"><span class="link-number">07</span><span class="link-text">Training & Awareness</span></a>
           </li>
           <li class="overlay-menu-item" data-image="assets/images/overlay/contact.jpg">
-            <a href="contact.html" class="overlay-link">
-              <span class="link-number">08</span>
-              <span class="link-text">Contact</span>
-            </a>
+            <a href="contact.html" class="overlay-link"><span class="link-number">08</span><span class="link-text">Contact</span></a>
           </li>
         </ul>
       </nav>
-
       <div class="overlay-footer">
         <a href="mailto:vrplvns@gmail.com" class="overlay-contact">vrplvns@gmail.com</a>
       </div>
@@ -116,40 +399,99 @@
   <main id="main-content">
 
     <!-- HERO SECTION -->
-    <section class="hero-section hero-contact" id="contact">
+    <section class="hero-section contact-hero" id="contact">
       <div class="hero-background">
         <img src="assets/images/hero/contact-hero.jpg" alt="Contact VRPL">
         <div class="hero-overlay"></div>
       </div>
-
       <div class="hero-content">
         <div class="container">
-          <h1 class="hero-title fade-in-up">Get in Touch</h1>
-          <p class="hero-subtitle fade-in-up delay-1">Let's Build a Sustainable Future Together</p>
+          <h1 class="hero-title fade-in-up">Let's Connect</h1>
+          <p class="hero-subtitle fade-in-up delay-1">Multiple Ways to Reach Us</p>
         </div>
       </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <!-- CONTACT SECTION -->
-    <section class="section contact-section">
+    <!-- CONTACT METHODS SECTION -->
+    <section class="section">
       <div class="container">
-        <div class="contact-grid">
-          <!-- Contact Form -->
-          <div class="contact-form-container">
+        <div class="section-header center">
+          <span class="section-tag">Choose Your Preferred Method</span>
+          <h2 class="section-title">How Would You Like to Connect?</h2>
+          <div class="copper-divider center"></div>
+        </div>
+
+        <div class="contact-methods">
+          <!-- Email Card -->
+          <div class="contact-card">
+            <div class="contact-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C89F80" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <h3>Email Us</h3>
+            <p>Send us a detailed message about your inquiry or partnership opportunity</p>
+            <a href="mailto:vrplvns@gmail.com" class="contact-link">vrplvns@gmail.com</a>
+          </div>
+
+          <!-- LinkedIn Card -->
+          <div class="contact-card">
+            <div class="contact-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C89F80" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </div>
+            <h3>Connect on LinkedIn</h3>
+            <p>Follow our company updates and connect with our team professionally</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-link">Visit Profile</a>
+          </div>
+
+          <!-- Meeting Card -->
+          <div class="contact-card">
+            <div class="contact-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C89F80" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <h3>Schedule a Meeting</h3>
+            <p>Book a call with our team to discuss partnerships, technology, or investments</p>
+            <a href="#contact-form" class="contact-link">Fill Form Below</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-form-section" id="contact-form">
+      <div class="container">
+        <div class="form-container">
+          <div class="form-header">
             <h2>Send Us a Message</h2>
-            <form class="contact-form" id="contactForm">
+            <p>We'll get back to you within 24 hours</p>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Your name">
+                <input type="text" id="name" name="name" required placeholder="Your full name">
               </div>
 
               <div class="form-group">
                 <label for="email">Email Address *</label>
                 <input type="email" id="email" name="email" required placeholder="your@email.com">
               </div>
+            </div>
 
+            <div class="form-row">
               <div class="form-group">
                 <label for="organization">Organization</label>
                 <input type="text" id="organization" name="organization" placeholder="Company or Institution">
@@ -159,79 +501,69 @@
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
               </div>
+            </div>
 
-              <div class="form-group">
-                <label for="subject">Subject *</label>
-                <select id="subject" name="subject" required>
-                  <option value="">Select a subject</option>
-                  <option value="partnership">Partnership Opportunity</option>
-                  <option value="investment">Investment Inquiry</option>
-                  <option value="technology">Technology Information</option>
-                  <option value="training">Training Programs</option>
-                  <option value="government">Government Collaboration</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="investment">Investment Inquiry</option>
+                <option value="technology">Technology Information</option>
+                <option value="training">Training Programs</option>
+                <option value="government">Government Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-              <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea id="message" name="message" rows="6" required placeholder="Tell us about your inquiry..."></textarea>
-              </div>
+            <div class="form-group">
+              <label for="message">Your Message *</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your inquiry..."></textarea>
+            </div>
 
-              <button type="submit" class="btn-copper">Send Message</button>
-            </form>
+            <div class="form-submit">
+              <button type="submit" class="submit-btn">
+                <span>Send Message</span>
+              </button>
+            </div>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <h3>✓ Message Sent Successfully!</h3>
+            <p>Thank you for contacting VRPL. We'll respond to your inquiry within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section class="contact-info-section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">Company Information</span>
+          <h2 class="section-title">About VRPL</h2>
+          <div class="copper-divider center"></div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <h4>Location</h4>
+            <p>Varanasi, Uttar Pradesh<br>India</p>
           </div>
 
-          <!-- Contact Information -->
-          <div class="contact-info">
-            <h2>Contact Information</h2>
+          <div class="info-item">
+            <h4>Company Status</h4>
+            <p>DPIIT Certified Startup<br>Govt. of India Recognized</p>
+          </div>
 
-            <div class="info-block">
-              <div class="info-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9C6A4A" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div class="info-content">
-                <h3>Email</h3>
-                <a href="mailto:vrplvns@gmail.com">vrplvns@gmail.com</a>
-              </div>
-            </div>
+          <div class="info-item">
+            <h4>Technology Partners</h4>
+            <p>CSIR-CMERI<br>BARC<br>Positronics Innovation Pvt Ltd</p>
+          </div>
 
-            <div class="info-block">
-              <div class="info-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9C6A4A" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div class="info-content">
-                <h3>Location</h3>
-                <p>Varanasi, Uttar Pradesh, India</p>
-              </div>
-            </div>
-
-            <div class="info-block">
-              <div class="info-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9C6A4A" stroke-width="2">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              <div class="info-content">
-                <h3>Status</h3>
-                <p>DPIIT Certified Startup</p>
-              </div>
-            </div>
-
-            <div class="partnerships">
-              <h3>Technology Partners</h3>
-              <ul>
-                <li>CSIR-CMERI</li>
-                <li>BARC (Bhabha Atomic Research Centre)</li>
-                <li>Positronics Innovation Pvt Ltd</li>
-              </ul>
-            </div>
+          <div class="info-item">
+            <h4>CIN Number</h4>
+            <p>U39000UP2025PTC231871</p>
           </div>
         </div>
       </div>
@@ -266,7 +598,6 @@
         </div>
 
         <div class="footer-links-grid">
-          <!-- Column 1: Company -->
           <div class="footer-column">
             <h3 class="footer-column-title">Company</h3>
             <ul class="footer-links">
@@ -277,8 +608,6 @@
               <li><a href="about.html#mission">Our Mission</a></li>
             </ul>
           </div>
-
-          <!-- Column 2: Technology -->
           <div class="footer-column">
             <h3 class="footer-column-title">Technology</h3>
             <ul class="footer-links">
@@ -289,8 +618,6 @@
               <li><a href="phases.html">Project Phases</a></li>
             </ul>
           </div>
-
-          <!-- Column 3: Impact -->
           <div class="footer-column">
             <h3 class="footer-column-title">Impact</h3>
             <ul class="footer-links">
@@ -301,8 +628,6 @@
               <li><a href="phases.html#hydrogen">Green Hydrogen</a></li>
             </ul>
           </div>
-
-          <!-- Column 4: Resources -->
           <div class="footer-column">
             <h3 class="footer-column-title">Resources</h3>
             <ul class="footer-links">
@@ -315,11 +640,7 @@
           </div>
         </div>
       </div>
-
-      <!-- Footer Divider -->
       <div class="footer-divider"></div>
-
-      <!-- Footer Middle Section - Partnerships & Missions -->
       <div class="footer-middle">
         <div class="footer-partnerships">
           <h4>Technology Partners</h4>
@@ -328,7 +649,6 @@
             <span class="partner-badge">BARC</span>
           </div>
         </div>
-
         <div class="footer-missions">
           <h4>Aligned With</h4>
           <ul class="mission-tags">
@@ -340,11 +660,7 @@
           </ul>
         </div>
       </div>
-
-      <!-- Footer Divider -->
       <div class="footer-divider"></div>
-
-      <!-- Footer Bottom Section -->
       <div class="footer-bottom">
         <div class="footer-bottom-left">
           <p class="footer-copyright">© 2024 Varanasi Recyclers Private Limited. All rights reserved.</p>
@@ -356,7 +672,6 @@
             <a href="#accessibility">Accessibility</a>
           </div>
         </div>
-
         <div class="footer-bottom-right">
           <p class="footer-tagline-small">Building a Sustainable Future Through Innovation</p>
           <div class="footer-stats-small">
@@ -371,6 +686,49 @@
 
   <script src="js/main.js"></script>
   <script src="js/link-handler.js"></script>
+
+  <script>
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        organization: document.getElementById('organization').value,
+        phone: document.getElementById('phone').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      // Simulate form submission (replace with actual API call)
+      console.log('Form submitted:', formData);
+
+      // Create mailto link
+      const mailtoLink = `mailto:vrplvns@gmail.com?subject=${encodeURIComponent(formData.subject + ' - ' + formData.name)}&body=${encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Organization: ${formData.organization}\n` +
+        `Phone: ${formData.phone}\n\n` +
+        `Message:\n${formData.message}`
+      )}`;
+
+      // Open mailto
+      window.location.href = mailtoLink;
+
+      // Show success message
+      document.getElementById('formSuccess').classList.add('show');
+
+      // Reset form
+      this.reset();
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        document.getElementById('formSuccess').classList.remove('show');
+      }, 5000);
+    });
+  </script>
 
 </body>
 </html>
