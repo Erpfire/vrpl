@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coming Soon - VRPL is working on bringing you new content">
+  <title>Coming Soon - VRPL</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #1C1C1C 0%, #2E2E2E 50%, #1C3B2C 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated background particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(167, 200, 161, 0.6);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 80%; top: 30%; animation-delay: 2s; }
+    .particle:nth-child(3) { left: 50%; top: 50%; animation-delay: 4s; }
+    .particle:nth-child(4) { left: 20%; top: 70%; animation-delay: 1s; }
+    .particle:nth-child(5) { left: 90%; top: 80%; animation-delay: 3s; }
+    .particle:nth-child(6) { left: 40%; top: 10%; animation-delay: 5s; background: rgba(200, 159, 128, 0.5); }
+    .particle:nth-child(7) { left: 70%; top: 60%; animation-delay: 2.5s; background: rgba(200, 159, 128, 0.5); }
+    .particle:nth-child(8) { left: 15%; top: 45%; animation-delay: 4.5s; }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(-30px) translateX(20px);
+        opacity: 0.8;
+      }
+    }
+
+    /* Main container */
+    .coming-soon-container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    /* Logo */
+    .logo {
+      margin-bottom: 40px;
+    }
+
+    .logo h1 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 700;
+      background: linear-gradient(135deg, #C89F80, #A7C8A1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .logo p {
+      font-size: clamp(14px, 2vw, 18px);
+      color: #DCD7D0;
+      font-weight: 400;
+    }
+
+    /* Main content */
+    .content {
+      background: rgba(46, 46, 46, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(156, 106, 74, 0.3);
+      border-radius: 16px;
+      padding: 60px 40px;
+      margin: 40px 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6A4A, #A7C8A1, #9C6A4A);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .content h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: #C89F80;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(167, 200, 161, 0.3);
+    }
+
+    .content p {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #DCD7D0;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .content .highlight {
+      color: #A7C8A1;
+      font-weight: 600;
+    }
+
+    /* Icon container */
+    .icon-container {
+      margin: 40px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(28, 59, 44, 0.3);
+      border-radius: 12px;
+      border: 1px solid rgba(167, 200, 161, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .icon-item:hover {
+      transform: translateY(-5px);
+      border-color: #A7C8A1;
+      box-shadow: 0 0 20px rgba(167, 200, 161, 0.3);
+    }
+
+    .icon-item svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .icon-item span {
+      font-size: 14px;
+      color: #C89F80;
+      font-weight: 500;
+    }
+
+    /* Back button */
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #9C6A4A, #C89F80);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(167, 200, 161, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .back-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .back-button:hover {
+      box-shadow: 0 0 24px rgba(167, 200, 161, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .back-button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Loading animation */
+    .loading-dots {
+      display: inline-flex;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C89F80, #A7C8A1);
+      animation: bounce 1.4s infinite ease-in-out;
+    }
+
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+    .dot:nth-child(3) { animation-delay: 0s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .content {
+        padding: 40px 24px;
+      }
+
+      .icon-container {
+        gap: 15px;
+      }
+
+      .icon-item {
+        padding: 15px;
+      }
+
+      .back-button {
+        padding: 14px 32px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated particles background -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Main content -->
+  <div class="coming-soon-container">
+    <!-- Logo -->
+    <div class="logo">
+      <h1>VRPL</h1>
+      <p>Varanasi Recyclers Private Limited</p>
+    </div>
+
+    <!-- Content card -->
+    <div class="content">
+      <h2>Coming Soon</h2>
+      <p>
+        We're working hard to bring you this content. This page is currently under development
+        as part of our mission to transform waste into <span class="highlight">clean energy</span>.
+      </p>
+      <p>
+        Thank you for your patience as we build a <span class="highlight">sustainable future</span> together.
+      </p>
+
+      <!-- Feature icons -->
+      <div class="icon-container">
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A7C8A1" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+          <span>Clean Energy</span>
+        </div>
+
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A7C8A1" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+          <span>Innovation</span>
+        </div>
+
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A7C8A1" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>Community</span>
+        </div>
+      </div>
+
+      <!-- Loading animation -->
+      <div class="loading-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Back button -->
+    <a href="index.html" class="back-button">
+      <span>← Back to Home</span>
+    </a>
+  </div>
+
+</body>
+</html>
