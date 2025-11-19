@@ -9,7 +9,18 @@
       "Bash(git reset:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: VRPL website - Waste-to-Energy platform\n\n- Complete responsive website for Varanasi Recyclers Private Limited\n- Plasma gasification technology showcase\n- Bio-industrial fusion design system\n- Docker deployment ready\n- Pages: Home, About, Technology, Phases, Impact\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git push:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(python generate_images.py:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(python process_vrpl_images.py:*)",
+      "Bash(pip install:*)",
+      "Bash(python update_images.py:*)",
+      "Bash(python add_process_journey.py:*)",
+      "Bash(python add_css_link.py:*)",
+      "Bash(python fix_stat_numbers.py:*)",
+      "Bash(python adjust_stat_glow.py:*)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []

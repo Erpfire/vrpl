@@ -1,0 +1,281 @@
+═══════════════════════════════════════════════════════════════
+  VRPL WEBSITE - IMAGE DOWNLOAD CHECKLIST
+  All images to create in Canva from Unsplash photos
+═══════════════════════════════════════════════════════════════
+
+📐 CANVAS SIZE GUIDE:
+───────────────────────────────────────────────────────────────
+- Hero & Overlay images: 1920 x 1080 (landscape)
+- Technology images: 800 x 600 (landscape)
+- Team images: 800 x 800 (square)
+- Process images: 800 x 600 (landscape)
+
+🎨 DUOTONE SETTINGS (Apply to ALL):
+───────────────────────────────────────────────────────────────
+- Color 1: #C89F80 (copper/orange)
+- Color 2: #2E2E2E (dark gray)
+- Intensity: 30-40%
+
+═══════════════════════════════════════════════════════════════
+
+🏔️ HERO IMAGES - 7 TOTAL (1920 x 1080)
+───────────────────────────────────────────────────────────────
+
+[ ] 1. ABOUT PAGE HERO
+    Canvas: 1920 x 1080
+    Search: "renewable energy workers" or "industrial workers"
+    Save as: about-hero.jpg
+
+[ ] 2. TECHNOLOGY PAGE HERO
+    Canvas: 1920 x 1080
+    Search: "industrial machinery" or "power plant equipment"
+    Save as: technology-hero.jpg
+
+[ ] 3. PHASES PAGE HERO
+    Canvas: 1920 x 1080
+    Search: "hydrogen plant" or "green energy facility"
+    Save as: phases-hero.jpg
+
+[ ] 4. IMPACT PAGE HERO
+    Canvas: 1920 x 1080
+    Search: "ganges river aerial" or "varanasi aerial"
+    Save as: impact-hero.jpg
+
+[ ] 5. GOVERNMENT PAGE HERO
+    Canvas: 1920 x 1080
+    Search: "parliament india" or "government building"
+    Save as: government-hero.jpg
+
+[ ] 6. TRAINING PAGE HERO
+    Canvas: 1920 x 1080
+    Search: "workshop training" or "engineering class"
+    Save as: training-hero.jpg
+
+[ ] 7. CONTACT PAGE HERO (✓ DONE!)
+    Canvas: 1920 x 1080
+    Search: "varanasi ghats"
+    Save as: contact-hero.jpg
+
+═══════════════════════════════════════════════════════════════
+
+🎭 OVERLAY MENU BACKGROUNDS - 8 TOTAL (1920 x 1080)
+───────────────────────────────────────────────────────────────
+
+[ ] 8. HOME OVERLAY
+    Canvas: 1920 x 1080
+    Search: "factory night" or "industrial building night"
+    Save as: home.jpg
+
+[ ] 9. ABOUT OVERLAY
+    Canvas: 1920 x 1080
+    Search: "team engineers" or "workers sunset"
+    Save as: about.jpg
+
+[ ] 10. TECHNOLOGY OVERLAY
+    Canvas: 1920 x 1080
+    Search: "plasma energy" or "electrical arc"
+    Save as: technology.jpg
+
+[ ] 11. PHASES OVERLAY
+    Canvas: 1920 x 1080
+    Search: "hydrogen tanks" or "industrial pipes"
+    Save as: phases.jpg
+
+[ ] 12. IMPACT OVERLAY
+    Canvas: 1920 x 1080
+    Search: "green landscape" or "nature pristine"
+    Save as: impact.jpg
+
+[ ] 13. GOVERNMENT OVERLAY
+    Canvas: 1920 x 1080
+    Search: "government interior" or "official hall"
+    Save as: government.jpg
+
+[ ] 14. TRAINING OVERLAY
+    Canvas: 1920 x 1080
+    Search: "hands working" or "collaboration closeup"
+    Save as: training.jpg
+
+[ ] 15. CONTACT OVERLAY
+    Canvas: 1920 x 1080
+    Search: "varanasi street" or "india market"
+    Save as: contact.jpg
+
+═══════════════════════════════════════════════════════════════
+
+⚙️ TECHNOLOGY PAGE IMAGES - 4 TOTAL (800 x 600)
+───────────────────────────────────────────────────────────────
+
+[ ] 16. PLASMA ILLUSTRATION
+    Canvas: 800 x 600
+    Search: "plasma physics" or "electric discharge"
+    Save as: plasma-illustration.jpg
+
+[ ] 17. SYNGAS PRODUCTION
+    Canvas: 800 x 600
+    Search: "industrial pipes" or "gas pipeline"
+    Save as: syngas.jpg
+
+[ ] 18. ELECTRICITY GENERATION
+    Canvas: 800 x 600
+    Search: "electrical substation" or "power distribution"
+    Save as: electricity.jpg
+
+[ ] 19. VITRIFIED SLAG
+    Canvas: 800 x 600
+    Search: "industrial material" or "glass texture"
+    Save as: slag.jpg
+
+═══════════════════════════════════════════════════════════════
+
+👥 TEAM IMAGES - 2 TOTAL (800 x 800)
+───────────────────────────────────────────────────────────────
+
+[ ] 20. FOUNDER PHOTO
+    Canvas: 800 x 800
+    Search: "entrepreneur portrait" or "indian businessman"
+    Save as: founder.jpg
+    ⚠️ Note: Consider getting real photo taken later!
+
+[ ] 21. CSIR COLLABORATION
+    Canvas: 800 x 800
+    Search: "scientists laboratory" or "research team"
+    Save as: csir-collaboration.jpg
+
+═══════════════════════════════════════════════════════════════
+
+🔄 PROCESS IMAGES - 4 TOTAL (800 x 600)
+───────────────────────────────────────────────────────────────
+
+[ ] 22. WASTE INPUT
+    Canvas: 800 x 600
+    Search: "waste facility" or "recycling plant"
+    Save as: waste-input.jpg
+
+[ ] 23. PLASMA CHAMBER
+    Canvas: 800 x 600
+    Search: "industrial furnace" or "plasma chamber"
+    Save as: plasma-chamber.jpg
+
+[ ] 24. SYNGAS OUTPUT
+    Canvas: 800 x 600
+    Search: "glass pipes" or "industrial tubes"
+    Save as: syngas-output.jpg
+
+[ ] 25. ENERGY GENERATION
+    Canvas: 800 x 600
+    Search: "electrical panel" or "power substation"
+    Save as: energy-generation.jpg
+
+═══════════════════════════════════════════════════════════════
+
+📊 SUMMARY
+───────────────────────────────────────────────────────────────
+
+TOTAL IMAGES NEEDED: 25
+
+By Size:
+- 1920 x 1080 (Hero + Overlay): 15 images
+- 800 x 600 (Tech + Process): 8 images
+- 800 x 800 (Team): 2 images
+
+By Priority:
+✅ CRITICAL (Launch website): Hero images (7)
+⭐ HIGH (Menu effects): Overlay images (8)
+📌 MEDIUM (Content): Technology + Team (6)
+💡 NICE TO HAVE: Process images (4)
+
+═══════════════════════════════════════════════════════════════
+
+🎯 RECOMMENDED ORDER
+───────────────────────────────────────────────────────────────
+
+SESSION 1 (Today - 1 hour):
+✓ Contact hero (DONE!)
+□ About hero
+□ Technology hero
+□ Impact hero
+□ Government hero
+□ Training hero
+□ Phases hero
+= 7 hero images complete!
+
+SESSION 2 (Later - 1 hour):
+□ All 8 overlay backgrounds
+= Menu system complete!
+
+SESSION 3 (Optional - 30 min):
+□ 4 technology images
+□ 2 team images
+
+SESSION 4 (Optional - 30 min):
+□ 4 process images
+
+═══════════════════════════════════════════════════════════════
+
+💡 WORKFLOW TIPS
+───────────────────────────────────────────────────────────────
+
+1. Keep one Canva tab open
+2. Create first design (1920x1080)
+3. Add photo, apply Duotone, download
+4. DUPLICATE the page (bottom of canvas)
+5. Delete old photo, add new one
+6. Download with new name
+7. Repeat!
+
+This way Duotone settings stay consistent! ✨
+
+═══════════════════════════════════════════════════════════════
+
+📁 WHERE TO SAVE (After downloading)
+───────────────────────────────────────────────────────────────
+
+Create these folders in Downloads (or directly in project):
+
+Downloads/vrpl-images/
+  ├── hero/
+  │   ├── about-hero.jpg
+  │   ├── technology-hero.jpg
+  │   ├── phases-hero.jpg
+  │   ├── impact-hero.jpg
+  │   ├── government-hero.jpg
+  │   ├── training-hero.jpg
+  │   └── contact-hero.jpg ✓
+  │
+  ├── overlay/
+  │   ├── home.jpg
+  │   ├── about.jpg
+  │   ├── technology.jpg
+  │   ├── phases.jpg
+  │   ├── impact.jpg
+  │   ├── government.jpg
+  │   ├── training.jpg
+  │   └── contact.jpg
+  │
+  ├── technology/
+  │   ├── plasma-illustration.jpg
+  │   ├── syngas.jpg
+  │   ├── electricity.jpg
+  │   └── slag.jpg
+  │
+  ├── team/
+  │   ├── founder.jpg
+  │   └── csir-collaboration.jpg
+  │
+  └── process/
+      ├── waste-input.jpg
+      ├── plasma-chamber.jpg
+      ├── syngas-output.jpg
+      └── energy-generation.jpg
+
+═══════════════════════════════════════════════════════════════
+
+✅ CHECKLIST COMPLETE!
+
+Take your time, download what you can.
+Start with the 7 hero images - they make the biggest impact!
+
+Good luck! 🚀📸
+
+═══════════════════════════════════════════════════════════════
