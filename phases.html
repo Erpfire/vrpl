@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VRPL Project Phases - Phase 1: Waste to Electricity, Phase 2: Waste to Green Hydrogen">
+  <title>Project Phases - VRPL | Waste to Energy to Hydrogen</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- MAIN HEADER -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="index.html" aria-label="VRPL Home">
+          <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="30" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" fill="#C89F80">VRPL</text>
+          </svg>
+        </a>
+      </div>
+
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="#phases" class="breadcrumb-link active">Phases</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#phase1" class="breadcrumb-link">Phase 1</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#phase2" class="breadcrumb-link">Phase 2</a>
+      </nav>
+
+      <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- OVERLAY MENU -->
+  <div class="overlay-menu" id="overlayMenu" aria-hidden="true">
+    <div class="overlay-background" id="overlayBackground"></div>
+    <div class="overlay-content">
+      <button class="overlay-close" id="overlayClose" aria-label="Close menu">
+        <span class="close-icon">×</span>
+      </button>
+      <nav class="overlay-nav">
+        <ul class="overlay-menu-list">
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80">
+            <a href="index.html" class="overlay-link"><span class="link-number">01</span><span class="link-text">Home</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80">
+            <a href="about.html" class="overlay-link"><span class="link-number">02</span><span class="link-text">About Us</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80">
+            <a href="technology.html" class="overlay-link"><span class="link-number">03</span><span class="link-text">Technology</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&q=80">
+            <a href="phases.html" class="overlay-link"><span class="link-number">04</span><span class="link-text">Project Phases</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1920&q=80">
+            <a href="impact.html" class="overlay-link"><span class="link-number">05</span><span class="link-text">Environmental Impact</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80">
+            <a href="government.html" class="overlay-link"><span class="link-number">06</span><span class="link-text">Government Alignment</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&q=80">
+            <a href="training.html" class="overlay-link"><span class="link-number">07</span><span class="link-text">Training & Awareness</span></a>
+          </li>
+          <li class="overlay-menu-item" data-image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80">
+            <a href="contact.html" class="overlay-link"><span class="link-number">08</span><span class="link-text">Contact</span></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="overlay-footer">
+        <a href="mailto:vrplvns@gmail.com" class="overlay-contact">vrplvns@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section hero-phases" id="phases">
+      <div class="hero-background">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&q=80" alt="Project Phases">
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="container">
+          <h1 class="hero-title fade-in-up">Project Phases</h1>
+          <p class="hero-subtitle fade-in-up delay-1">From Waste to Energy to Hydrogen</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PHASES OVERVIEW SECTION -->
+    <section class="section phases-overview">
+      <div class="container">
+        <div class="phase-timeline">
+          <!-- PHASE 1 -->
+          <div class="phase-block phase-1" id="phase1">
+            <div class="phase-number">Phase 1</div>
+            <div class="phase-content">
+              <h2 class="phase-title">Waste → Syngas → Electricity</h2>
+              <p class="phase-description">
+                Our initial phase focuses on converting waste into electricity through plasma gasification technology.
+              </p>
+
+              <div class="phase-details">
+                <h3>Input Materials</h3>
+                <ul class="phase-list">
+                  <li>Municipal Solid Waste (MSW)</li>
+                  <li>Plastic Waste</li>
+                  <li>Biomedical Waste (BMW)</li>
+                  <li>Hazardous Waste (HW)</li>
+                  <li>Metallic Waste</li>
+                </ul>
+
+                <h3>Process</h3>
+                <p>
+                  All waste types are fed into the plasma chamber where they're converted into syngas at
+                  temperatures exceeding 3000°C. This syngas is then used to generate electricity.
+                </p>
+
+                <h3>Output</h3>
+                <ul class="phase-list">
+                  <li>Clean electricity for grid distribution</li>
+                  <li>Vitrified slag for construction use (1/250th of original volume)</li>
+                  <li>Zero harmful emissions</li>
+                </ul>
+
+                <h3>Timeline</h3>
+                <p>Current phase - Operational readiness in progress</p>
+              </div>
+
+              <div class="phase-image-block">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1000&q=80" alt="Phase 1: Waste to Electricity">
+                <p class="image-caption">Phase 1 Process Flow (Placeholder - Replace with actual diagram)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-connector">
+            <div class="connector-circle"></div>
+            <div class="connector-vertical-line"></div>
+            <div class="connector-circle"></div>
+          </div>
+
+          <!-- PHASE 2 -->
+          <div class="phase-block phase-2" id="phase2">
+            <div class="phase-number">Phase 2</div>
+            <div class="phase-content">
+              <h2 class="phase-title">Waste → Syngas → Green Hydrogen</h2>
+              <p class="phase-description">
+                Scalable upgrade using additional modules to produce green hydrogen from waste-derived syngas.
+              </p>
+
+              <div class="phase-details">
+                <h3>Enhancement</h3>
+                <p>
+                  The current technology setup can be easily scaled up for generation of hydrogen with a different
+                  setup to be attached after the success of Phase 1. Additional processing modules will be integrated
+                  to convert the hydrogen-rich syngas into pure green hydrogen.
+                </p>
+
+                <h3>Alignment</h3>
+                <ul class="phase-list">
+                  <li>India's Green Hydrogen Mission</li>
+                  <li>5 MMT production target by 2030</li>
+                  <li>10% global market capture</li>
+                  <li>50 MMT annual CO₂ reduction</li>
+                </ul>
+
+                <h3>Output</h3>
+                <ul class="phase-list">
+                  <li>Pure green hydrogen for industrial use and fuel cells</li>
+                  <li>Continued electricity generation</li>
+                  <li>Vitrified slag</li>
+                </ul>
+
+                <h3>Timeline</h3>
+                <p>Planned expansion - Following Phase 1 success</p>
+              </div>
+
+              <div class="phase-image-block">
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1000&q=80" alt="Phase 2: Waste to Hydrogen">
+                <p class="image-caption">Phase 2 Expansion Plan (Placeholder - Replace with actual diagram)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- OBJECTIVE EXECUTION PLAN SECTION -->
+    <section class="section execution-plan bg-dark">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">Implementation</span>
+          <h2 class="section-title">Objective Execution Plan</h2>
+          <div class="copper-divider center"></div>
+        </div>
+
+        <div class="execution-content">
+          <div class="execution-card">
+            <h3>Dedicated Waste Collection Vehicle</h3>
+            <p>
+              A separate waste vehicle will be mounted and covered in a closed manner with a tripper as part
+              of the proposed project, which aims to transport waste from all stakeholders in accordance with
+              their mutual agreements. There will be a separate expense and cost list for this vehicle.
+            </p>
+            <p>
+              The project will also incorporate later Varanasi Nagar Nigam's waste.
+            </p>
+            <p class="highlight-text">
+              This expense will be covered by VRPL out of the start-up's funding.
+            </p>
+          </div>
+
+          <div class="execution-card">
+            <h3>Green Energy Transport</h3>
+            <p>
+              To promote green energy, a <strong>CNG or Electric Van vehicle</strong> with a 1.5–2 ton/run
+              carrying capacity will operate throughout the city.
+            </p>
+          </div>
+
+          <div class="execution-images">
+            <div class="exec-image-block">
+              <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80" alt="Waste Collection Vehicle">
+              <p class="image-caption">Waste Collection Vehicle (Placeholder)</p>
+            </div>
+            <div class="exec-image-block">
+              <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&q=80" alt="Electric Van">
+              <p class="image-caption">CNG/Electric Van (Placeholder)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- WASTE COLLECTION MODES SECTION -->
+    <section class="section waste-collection-modes" id="waste-modes">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">Collection System</span>
+          <h2 class="section-title">Mode in Which Wastes Will Be Carried</h2>
+          <div class="copper-divider center"></div>
+          <p class="section-description">Types of Colour Coded Dustbins and Their Usage</p>
+        </div>
+
+        <div class="dustbins-grid">
+          <div class="dustbin-card green-dustbin">
+            <div class="dustbin-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </div>
+            <div class="dustbin-image">
+              <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&q=80" alt="Green Dustbin">
+            </div>
+            <h3 style="color: #4CAF50;">Green Dustbin</h3>
+            <p><strong>For:</strong> Biodegradable and Organic Waste</p>
+            <ul class="waste-examples">
+              <li>Food waste</li>
+              <li>Garden waste</li>
+              <li>Paper</li>
+              <li>Natural materials</li>
+            </ul>
+          </div>
+
+          <div class="dustbin-card blue-dustbin">
+            <div class="dustbin-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </div>
+            <div class="dustbin-image">
+              <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=400&q=80" alt="Blue Dustbin">
+            </div>
+            <h3 style="color: #2196F3;">Blue Dustbin</h3>
+            <p><strong>For:</strong> Dry Waste and Recyclable Items</p>
+            <ul class="waste-examples">
+              <li>Plastic bottles</li>
+              <li>Glass</li>
+              <li>Metal cans</li>
+              <li>Cardboard</li>
+            </ul>
+          </div>
+
+          <div class="dustbin-card red-dustbin">
+            <div class="dustbin-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#F44336" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <line x1="12" y1="11" x2="12" y2="17"/>
+                <line x1="9" y1="11" x2="9" y2="17"/>
+                <line x1="15" y1="11" x2="15" y2="17"/>
+              </svg>
+            </div>
+            <div class="dustbin-image">
+              <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807?w=400&q=80" alt="Red Dustbin">
+            </div>
+            <h3 style="color: #F44336;">Red Dustbin</h3>
+            <p><strong>For:</strong> Hazardous or Biomedical Waste</p>
+            <ul class="waste-examples">
+              <li>Chemical containers</li>
+              <li>Batteries</li>
+              <li>Electronic waste</li>
+              <li>Biomedical waste</li>
+            </ul>
+          </div>
+
+          <div class="dustbin-card yellow-dustbin">
+            <div class="dustbin-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#FFEB3B" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <path d="M12 11v6"/>
+                <circle cx="12" cy="9" r="0.5"/>
+              </svg>
+            </div>
+            <div class="dustbin-image">
+              <img src="https://images.unsplash.com/photo-1628863353691-0071c8c1874c?w=400&q=80" alt="Yellow Dustbin">
+            </div>
+            <h3 style="color: #FFEB3B;">Yellow Dustbin</h3>
+            <p><strong>For:</strong> Sanitary and Medical Waste</p>
+            <ul class="waste-examples">
+              <li>Sanitary napkins</li>
+              <li>Diapers</li>
+              <li>Bandages</li>
+              <li>Medical supplies</li>
+            </ul>
+          </div>
+
+          <div class="dustbin-card grey-dustbin">
+            <div class="dustbin-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#9E9E9E" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </div>
+            <div class="dustbin-image">
+              <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=400&q=80" alt="Black/Grey Dustbin">
+            </div>
+            <h3 style="color: #9E9E9E;">Black/Grey Dustbin</h3>
+            <p><strong>For:</strong> General Waste Not Suitable for Recycling</p>
+            <ul class="waste-examples">
+              <li>Mixed waste</li>
+              <li>Soiled materials</li>
+              <li>Non-recyclables</li>
+              <li>Other residual waste</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- HYDROGEN MISSION SECTION -->
+    <section class="section hydrogen-mission bg-medium" id="hydrogen">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">National Initiative</span>
+          <h2 class="section-title">India's Green Hydrogen Mission</h2>
+          <div class="copper-divider center"></div>
+        </div>
+
+        <div class="mission-stats">
+          <div class="mission-stat">
+            <h3 class="stat-number-huge">5 MMT</h3>
+            <p>Green Hydrogen Capacity by 2030</p>
+            <span class="stat-note">Expandable to 10 MMT</span>
+          </div>
+
+          <div class="mission-stat">
+            <h3 class="stat-number-huge">10%</h3>
+            <p>Global Market Share Target</p>
+            <span class="stat-note">India's hydrogen leadership</span>
+          </div>
+
+          <div class="mission-stat">
+            <h3 class="stat-number-huge">50 MMT</h3>
+            <p>Annual CO₂ Reduction</p>
+            <span class="stat-note">Environmental impact</span>
+          </div>
+        </div>
+
+        <div class="mission-funding">
+          <h3>Financial Outlay</h3>
+          <div class="funding-grid">
+            <div class="funding-item">
+              <span class="funding-amount">₹19,744 Cr</span>
+              <span class="funding-label">Total Budget</span>
+            </div>
+            <div class="funding-item">
+              <span class="funding-amount">₹17,490 Cr</span>
+              <span class="funding-label">SIGHT Program</span>
+            </div>
+            <div class="funding-item">
+              <span class="funding-amount">₹1,466 Cr</span>
+              <span class="funding-label">Pilot Projects</span>
+            </div>
+            <div class="funding-item">
+              <span class="funding-amount">₹400 Cr</span>
+              <span class="funding-label">R&D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="footer-logo">VRPL</h2>
+          <p class="footer-tagline">Transforming Waste into Clean Energy</p>
+          <p class="footer-certification">DPIIT Certified Startup</p>
+          <div class="footer-contact-primary">
+            <a href="mailto:vrplvns@gmail.com" class="footer-email">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 5l-8 6-8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              vrplvns@gmail.com
+            </a>
+            <p class="footer-location">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 2a6 6 0 00-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 00-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Varanasi, Uttar Pradesh, India
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-middle">
+        <div class="footer-partnerships">
+          <h4>Technology Partners</h4>
+          <div class="partner-logos">
+            <span class="partner-badge">CSIR-CMERI</span>
+            <span class="partner-badge">BARC</span>
+          </div>
+        </div>
+        <div class="footer-missions">
+          <h4>Aligned With</h4>
+          <ul class="mission-tags">
+            <li>Viksit Bharat 2047</li>
+            <li>Green Hydrogen Mission</li>
+            <li>Samriddh UP 2047</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <p class="footer-copyright">© 2024 Varanasi Recyclers Private Limited. All rights reserved.</p>
+          <p class="footer-cin">CIN: U39000UP2025PTC231871</p>
+        </div>
+        <div class="footer-bottom-right">
+          <p class="footer-tagline-small">Building a Sustainable Future Through Innovation</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
