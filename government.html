@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VRPL Government Alignment - Compliant with SWM Rules, CPCB Guidelines, and all regulatory frameworks">
+  <title>Government Alignment - VRPL</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Page-specific styles */
+    .hero-government {
+      background: linear-gradient(135deg, rgba(28, 59, 44, 0.9), rgba(46, 46, 46, 0.85));
+    }
+
+    .policies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-3xl);
+    }
+
+    .policy-card {
+      background: linear-gradient(145deg, var(--steel-gray), #3A3A3A);
+      border: 1px solid var(--copper-medium);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .policy-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--copper-medium), var(--light-green));
+    }
+
+    .policy-card:hover {
+      box-shadow: 0 0 30px rgba(167, 200, 161, 0.2);
+      transform: translateY(-8px);
+      border-color: var(--light-green);
+    }
+
+    .policy-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(156, 106, 74, 0.2);
+      border-radius: var(--radius-md);
+    }
+
+    .policy-icon img {
+      width: 50px;
+      height: 50px;
+      filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(978%) hue-rotate(334deg) brightness(87%) contrast(87%);
+    }
+
+    .policy-card h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--copper-light);
+      margin-bottom: var(--space-md);
+    }
+
+    .policy-card p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .cert-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+      margin-top: var(--space-3xl);
+      position: relative;
+    }
+
+    .cert-timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 60px;
+      bottom: 60px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--copper-medium), var(--light-green));
+    }
+
+    .cert-item {
+      display: flex;
+      gap: var(--space-xl);
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .cert-badge {
+      flex: 0 0 80px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--copper-medium), var(--copper-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--background-dark);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cert-badge img {
+      width: 40px;
+      height: 40px;
+      filter: brightness(0) saturate(100%) invert(100%);
+    }
+
+    .cert-item h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--copper-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cert-item p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .reports-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-3xl);
+    }
+
+    .report-card {
+      background: rgba(46, 46, 46, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(156, 106, 74, 0.3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      transition: all var(--transition-base);
+    }
+
+    .report-card:hover {
+      border-color: var(--copper-light);
+      box-shadow: 0 0 24px rgba(156, 106, 74, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .report-card h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--light-green);
+      margin-bottom: var(--space-md);
+    }
+
+    .report-card p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .cert-timeline::before {
+        left: 20px;
+      }
+
+      .cert-badge {
+        flex: 0 0 60px;
+        width: 60px;
+        height: 60px;
+      }
+
+      .cert-badge img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="index.html">
+          <span style="font-size: 24px; font-weight: 700; color: var(--copper-light);">VRPL</span>
+        </a>
+      </div>
+
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#policies" class="breadcrumb-link">Policies</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#certifications" class="breadcrumb-link">Certifications</a>
+      </nav>
+
+      <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Full-Screen Overlay Menu -->
+  <div class="overlay-menu" id="overlayMenu" aria-hidden="true">
+    <div class="overlay-background" id="overlayBackground"></div>
+
+    <div class="overlay-content">
+      <button class="overlay-close" id="overlayClose" aria-label="Close menu">
+        <span class="close-icon">×</span>
+      </button>
+
+      <nav class="overlay-nav">
+        <ul class="overlay-menu-list">
+          <li class="overlay-menu-item" data-image="assets/images/overlay/home.jpg">
+            <a href="index.html" class="overlay-link">
+              <span class="link-number">01</span>
+              <span class="link-text">Home</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/about.jpg">
+            <a href="about.html" class="overlay-link">
+              <span class="link-number">02</span>
+              <span class="link-text">About Us</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/technology.jpg">
+            <a href="technology.html" class="overlay-link">
+              <span class="link-number">03</span>
+              <span class="link-text">Technology</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/phases.jpg">
+            <a href="phases.html" class="overlay-link">
+              <span class="link-number">04</span>
+              <span class="link-text">Project Phases</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/impact.jpg">
+            <a href="impact.html" class="overlay-link">
+              <span class="link-number">05</span>
+              <span class="link-text">Environmental Impact</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/government.jpg">
+            <a href="government.html" class="overlay-link">
+              <span class="link-number">06</span>
+              <span class="link-text">Government Alignment</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/training.jpg">
+            <a href="training.html" class="overlay-link">
+              <span class="link-number">07</span>
+              <span class="link-text">Training & Awareness</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/contact.jpg">
+            <a href="contact.html" class="overlay-link">
+              <span class="link-number">08</span>
+              <span class="link-text">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="overlay-footer">
+        <a href="mailto:vrplvns@gmail.com" class="overlay-contact">vrplvns@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section hero-government" id="home">
+    <div class="hero-background">
+      <img src="assets/images/hero/government-hero.jpg" alt="Government Alignment" class="hero-image">
+      <div class="hero-overlay"></div>
+      <div class="copper-streak"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="container">
+        <h1 class="hero-title fade-in-up">Government Alignment</h1>
+        <p class="hero-subtitle fade-in-up delay-1">Compliant, Certified, Committed</p>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-icon"></div>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- Governing Policies Section -->
+  <section class="section policies-section" id="policies">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Regulatory Compliance</span>
+        <h2 class="section-title">Governing Policies & Rules</h2>
+        <div class="copper-divider center"></div>
+      </div>
+
+      <div class="policies-grid">
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3>Solid Waste Management Rules 2016</h3>
+          <p>Full compliance with national SWM regulations for waste processing, segregation, and disposal</p>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h3>Hazardous Waste Rules 2008</h3>
+          <p>Certified for safe hazardous waste processing with plasma gasification technology</p>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <h3>CPCB Guidelines</h3>
+          <p>Adhering to Central Pollution Control Board standards for air quality and emissions monitoring</p>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+          </div>
+          <h3>Government Emission Norms</h3>
+          <p>Exceeding all emission control requirements with zero dioxins and furans output</p>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+              <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+              <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <h3>CSE Plastic Concerns</h3>
+          <p>Addressing Centre for Science and Environment guidelines on plastic waste management</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="section certifications bg-dark" id="certifications">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Required Approvals</span>
+        <h2 class="section-title">Certifications & Clearances</h2>
+        <div class="copper-divider center"></div>
+      </div>
+
+      <div class="cert-timeline">
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>Detailed Project Report (DPR)</h3>
+            <p>Comprehensive technical and financial documentation covering all aspects of plasma gasification facility operations, safety measures, and environmental impact assessments</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>DISCOM Commissioning Certificate</h3>
+            <p>Distribution company approval for grid connection, ensuring electricity generated from waste meets all power quality standards and grid integration requirements</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>CTE & CTO from UPPCB</h3>
+            <p>Consent to Establish and Consent to Operate from Uttar Pradesh Pollution Control Board, ensuring compliance with all state environmental regulations</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+          </div>
+          <div>
+            <h3>EIA Clearance</h3>
+            <p>Environmental Impact Assessment approval demonstrating minimal ecological footprint, negative CO₂ impact, and superior environmental performance over traditional methods</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3>MNRE Approval</h3>
+            <p>Ministry of New and Renewable Energy certification recognizing plasma gasification as clean energy technology aligned with India's renewable energy goals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Reports Section -->
+  <section class="section regulatory-reports" id="reports">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Accountability</span>
+        <h2 class="section-title">Regulatory Body Reports</h2>
+        <div class="copper-divider center"></div>
+      </div>
+
+      <div class="reports-grid">
+        <div class="report-card">
+          <h3>NGT Concerns</h3>
+          <p>National Green Tribunal findings on Varanasi waste management challenges addressed comprehensively through plasma gasification technology, eliminating landfill dependency and groundwater contamination risks</p>
+        </div>
+
+        <div class="report-card">
+          <h3>CAG Reports</h3>
+          <p>Comptroller and Auditor General concerns about untreated waste entering storm drains and incomplete infrastructure resolved through our comprehensive waste-to-energy solution</p>
+        </div>
+
+        <div class="report-card">
+          <h3>CPCB Monitoring</h3>
+          <p>Central Pollution Control Board air quality and waste management guidelines compliance ensured through Continuous Emission Monitoring Systems (CEMS) and zero harmful emissions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Footer Links Grid -->
+        <div class="footer-links-grid">
+          <!-- Column 1: Company -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Company</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="technology.html">Technology</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Solutions -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Solutions</h3>
+            <ul class="footer-links">
+              <li><a href="phases.html">Project Phases</a></li>
+              <li><a href="impact.html">Environmental Impact</a></li>
+              <li><a href="government.html">Government Alignment</a></li>
+              <li><a href="training.html">Training Programs</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Resources -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#policies">Policies</a></li>
+              <li><a href="#certifications">Certifications</a></li>
+              <li><a href="#reports">Reports</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Connect -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Connect</h3>
+            <ul class="footer-links">
+              <li><a href="mailto:vrplvns@gmail.com">Email Us</a></li>
+              <li><a href="contact.html">Partner With Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mission Alignment Tags -->
+        <div class="footer-mission-tags">
+          <span class="mission-tag">Samriddh UP 2047</span>
+          <span class="mission-tag">Nari Shakti Mission</span>
+          <span class="mission-tag">Viksit Bharat 2047</span>
+          <span class="mission-tag">SDG Goals 3 & 6</span>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <p>&copy; 2024 Varanasi Recyclers Private Limited. All rights reserved.</p>
+            <div class="footer-legal-links">
+              <a href="coming-soon.html">Privacy Policy</a>
+              <span class="separator">•</span>
+              <a href="coming-soon.html">Terms of Service</a>
+              <span class="separator">•</span>
+              <a href="coming-soon.html">Accessibility</a>
+            </div>
+          </div>
+
+          <div class="footer-stats">
+            <div class="footer-stat">
+              <span class="stat-badge">DPIIT Certified</span>
+            </div>
+            <div class="footer-stat">
+              <span class="stat-badge">CSIR-CMERI Partner</span>
+            </div>
+            <div class="footer-stat">
+              <span class="stat-badge">BARC Technology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/navigation.js"></script>
+  <script src="js/scroll-observer.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/link-handler.js"></script>
+
+</body>
+</html>

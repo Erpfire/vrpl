@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VRPL Training & Awareness - Building capacity through education programs and technical training">
+  <title>Training & Awareness - VRPL</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Page-specific styles */
+    .hero-training {
+      background: linear-gradient(135deg, rgba(73, 109, 83, 0.9), rgba(46, 46, 46, 0.85));
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-3xl);
+    }
+
+    .program-card {
+      background: linear-gradient(145deg, var(--steel-gray), #3A3A3A);
+      border: 1px solid var(--moss-green);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--moss-green), var(--light-green));
+    }
+
+    .program-card:hover {
+      box-shadow: 0 0 30px rgba(167, 200, 161, 0.3);
+      transform: translateY(-8px);
+      border-color: var(--light-green);
+    }
+
+    .program-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(167, 200, 161, 0.2);
+      border-radius: 50%;
+    }
+
+    .program-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--light-green);
+    }
+
+    .program-card h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--light-green);
+      margin-bottom: var(--space-md);
+      text-align: center;
+    }
+
+    .program-card > p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+      text-align: center;
+    }
+
+    .program-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .program-features li {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      padding: var(--space-sm) 0;
+      padding-left: var(--space-lg);
+      position: relative;
+    }
+
+    .program-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--light-green);
+      font-weight: bold;
+    }
+
+    .workshop-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+      margin-top: var(--space-3xl);
+    }
+
+    .workshop-item {
+      background: rgba(46, 46, 46, 0.5);
+      backdrop-filter: blur(10px);
+      border-left: 4px solid var(--copper-medium);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      transition: all var(--transition-base);
+    }
+
+    .workshop-item:hover {
+      border-left-color: var(--light-green);
+      box-shadow: 0 0 20px rgba(167, 200, 161, 0.2);
+      transform: translateX(10px);
+    }
+
+    .workshop-item h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--copper-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .workshop-item p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+
+    .workshop-duration {
+      display: inline-block;
+      font-size: var(--text-sm);
+      color: var(--light-green);
+      font-weight: var(--weight-semibold);
+      padding: var(--space-xs) var(--space-md);
+      background: rgba(167, 200, 161, 0.2);
+      border-radius: var(--radius-sm);
+    }
+
+    .csir-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .csir-content h3 {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--copper-light);
+      margin-bottom: var(--space-md);
+    }
+
+    .csir-content .lead-text {
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+      margin-bottom: var(--space-lg);
+      line-height: 1.6;
+    }
+
+    .csir-content p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .training-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .csir-section {
+        grid-template-columns: 1fr;
+      }
+
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="index.html">
+          <span style="font-size: 24px; font-weight: 700; color: var(--copper-light);">VRPL</span>
+        </a>
+      </div>
+
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#programs" class="breadcrumb-link">Programs</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#workshops" class="breadcrumb-link">Workshops</a>
+      </nav>
+
+      <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Full-Screen Overlay Menu -->
+  <div class="overlay-menu" id="overlayMenu" aria-hidden="true">
+    <div class="overlay-background" id="overlayBackground"></div>
+
+    <div class="overlay-content">
+      <button class="overlay-close" id="overlayClose" aria-label="Close menu">
+        <span class="close-icon">×</span>
+      </button>
+
+      <nav class="overlay-nav">
+        <ul class="overlay-menu-list">
+          <li class="overlay-menu-item" data-image="assets/images/overlay/home.jpg">
+            <a href="index.html" class="overlay-link">
+              <span class="link-number">01</span>
+              <span class="link-text">Home</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/about.jpg">
+            <a href="about.html" class="overlay-link">
+              <span class="link-number">02</span>
+              <span class="link-text">About Us</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/technology.jpg">
+            <a href="technology.html" class="overlay-link">
+              <span class="link-number">03</span>
+              <span class="link-text">Technology</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/phases.jpg">
+            <a href="phases.html" class="overlay-link">
+              <span class="link-number">04</span>
+              <span class="link-text">Project Phases</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/impact.jpg">
+            <a href="impact.html" class="overlay-link">
+              <span class="link-number">05</span>
+              <span class="link-text">Environmental Impact</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/government.jpg">
+            <a href="government.html" class="overlay-link">
+              <span class="link-number">06</span>
+              <span class="link-text">Government Alignment</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/training.jpg">
+            <a href="training.html" class="overlay-link">
+              <span class="link-number">07</span>
+              <span class="link-text">Training & Awareness</span>
+            </a>
+          </li>
+          <li class="overlay-menu-item" data-image="assets/images/overlay/contact.jpg">
+            <a href="contact.html" class="overlay-link">
+              <span class="link-number">08</span>
+              <span class="link-text">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="overlay-footer">
+        <a href="mailto:vrplvns@gmail.com" class="overlay-contact">vrplvns@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section hero-training" id="home">
+    <div class="hero-background">
+      <img src="assets/images/hero/training-hero.jpg" alt="Training Programs" class="hero-image">
+      <div class="hero-overlay"></div>
+      <div class="copper-streak"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="container">
+        <h1 class="hero-title fade-in-up">Training & Awareness</h1>
+        <p class="hero-subtitle fade-in-up delay-1">Building Capacity, Creating Change</p>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-icon"></div>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- Programs Overview Section -->
+  <section class="section programs-overview" id="programs">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Education</span>
+        <h2 class="section-title">Our Programs</h2>
+        <div class="copper-divider center"></div>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <h3>School Programs</h3>
+          <p>
+            Interactive sessions teaching students about waste management,
+            plasma technology, and environmental responsibility
+          </p>
+          <ul class="program-features">
+            <li>Age-appropriate curriculum</li>
+            <li>Hands-on demonstrations</li>
+            <li>Environmental awareness campaigns</li>
+            <li>Waste segregation training</li>
+          </ul>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <h3>College Programs</h3>
+          <p>
+            Technical training for engineering and science students on
+            plasma gasification technology and renewable energy
+          </p>
+          <ul class="program-features">
+            <li>Technical workshops</li>
+            <li>Industry exposure visits</li>
+            <li>Research collaboration opportunities</li>
+            <li>Internship programs</li>
+          </ul>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Capacity Building</h3>
+          <p>
+            Professional development for government officials and
+            waste management professionals
+          </p>
+          <ul class="program-features">
+            <li>Policy implementation workshops</li>
+            <li>Technical training per CSIR-CMERI</li>
+            <li>Best practices sharing sessions</li>
+            <li>Regulatory compliance training</li>
+          </ul>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3>Mentorship Programs</h3>
+          <p>
+            Guiding aspiring entrepreneurs and students in clean
+            technology and sustainable business practices
+          </p>
+          <ul class="program-features">
+            <li>Startup mentorship</li>
+            <li>Career guidance in clean tech</li>
+            <li>Industry networking events</li>
+            <li>Business development support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workshops Section -->
+  <section class="section workshops bg-dark" id="workshops">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Skill Development</span>
+        <h2 class="section-title">Workshops & Training</h2>
+        <div class="copper-divider center"></div>
+      </div>
+
+      <div class="workshop-list">
+        <div class="workshop-item">
+          <h3>Plasma Gasification Technology</h3>
+          <p>
+            Deep dive into the science and operations of plasma systems, covering thermal dynamics,
+            syngas production, energy conversion efficiency, and safety protocols. Participants gain
+            hands-on understanding of fourth-state-of-matter technology and its applications.
+          </p>
+          <span class="workshop-duration">Duration: 2 days</span>
+        </div>
+
+        <div class="workshop-item">
+          <h3>Waste Management Best Practices</h3>
+          <p>
+            Comprehensive overview of modern waste handling, segregation techniques, processing methods,
+            and circular economy principles. Learn about waste-to-energy pathways, environmental compliance,
+            and sustainable waste management strategies aligned with government regulations.
+          </p>
+          <span class="workshop-duration">Duration: 1 day</span>
+        </div>
+
+        <div class="workshop-item">
+          <h3>Green Hydrogen Production</h3>
+          <p>
+            Future-focused training on hydrogen economy fundamentals, production methods from waste-derived
+            syngas, storage technologies, and applications. Aligned with India's Green Hydrogen Mission and
+            5 MMT capacity targets by 2030.
+          </p>
+          <span class="workshop-duration">Duration: 1 day</span>
+        </div>
+
+        <div class="workshop-item">
+          <h3>Environmental Compliance & Monitoring</h3>
+          <p>
+            Understanding regulations, certifications, and monitoring requirements including CPCB guidelines,
+            CEMS implementation, emission standards, and Life-Cycle Analysis methodologies. Learn to navigate
+            regulatory frameworks and maintain compliance.
+          </p>
+          <span class="workshop-duration">Duration: 1 day</span>
+        </div>
+
+        <div class="workshop-item">
+          <h3>Women in Clean Energy Leadership</h3>
+          <p>
+            Specialized program aligned with Nari Shakti Mission 2047, empowering women through technical
+            training, leadership development, and career pathways in renewable energy sector. Supporting
+            our commitment to 50% women workforce.
+          </p>
+          <span class="workshop-duration">Duration: 2 days</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CSIR Training Section -->
+  <section class="section csir-training" id="csir">
+    <div class="container">
+      <div class="csir-section">
+        <div class="csir-content">
+          <div class="section-header">
+            <span class="section-tag">Partnership</span>
+            <h2 class="section-title">CSIR-CMERI Guidelines</h2>
+            <div class="copper-divider"></div>
+          </div>
+          <p class="lead-text">
+            All our training programs follow CSIR-CMERI (Council of Scientific and
+            Industrial Research - Central Mechanical Engineering Research Institute)
+            guidelines to ensure technical excellence and safety.
+          </p>
+          <p>
+            We're hiring skilled manpower trained according to these rigorous standards,
+            ensuring operational safety, efficiency, and alignment with indigenous technology
+            development goals. Our partnership with CSIR-CMERI and BARC guarantees that every
+            team member receives world-class technical education.
+          </p>
+          <br>
+          <p style="color: var(--light-green); font-weight: 600;">
+            Training certification recognized by CSIR-CMERI validates technical competency
+            in plasma gasification operations, safety protocols, and waste management systems.
+          </p>
+        </div>
+
+        <div class="csir-image-container">
+          <img src="assets/images/training/csir-collaboration.jpg" alt="CSIR Collaboration" class="training-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Metrics Section -->
+  <section class="section impact-metrics bg-dark">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Training Impact</span>
+        <h2 class="section-title">Building India's Clean Energy Workforce</h2>
+        <div class="copper-divider center"></div>
+      </div>
+
+      <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-xl); margin-top: var(--space-3xl);">
+        <div class="stat-card" style="text-align: center; padding: var(--space-xl); background: rgba(156, 106, 74, 0.1); border-radius: var(--radius-lg); border: 1px solid var(--copper-medium);">
+          <h3 style="font-size: var(--text-4xl); color: var(--copper-light); font-weight: 700; margin-bottom: var(--space-sm);">50%</h3>
+          <p style="color: var(--text-secondary);">Women Workforce Target</p>
+          <span style="font-size: var(--text-xs); color: var(--light-green);">Nari Shakti Mission 2047</span>
+        </div>
+
+        <div class="stat-card" style="text-align: center; padding: var(--space-xl); background: rgba(167, 200, 161, 0.1); border-radius: var(--radius-lg); border: 1px solid var(--moss-green);">
+          <h3 style="font-size: var(--text-4xl); color: var(--light-green); font-weight: 700; margin-bottom: var(--space-sm);">100+</h3>
+          <p style="color: var(--text-secondary);">Students Trained Annually</p>
+          <span style="font-size: var(--text-xs); color: var(--copper-light);">Across schools & colleges</span>
+        </div>
+
+        <div class="stat-card" style="text-align: center; padding: var(--space-xl); background: rgba(156, 106, 74, 0.1); border-radius: var(--radius-lg); border: 1px solid var(--copper-medium);">
+          <h3 style="font-size: var(--text-4xl); color: var(--copper-light); font-weight: 700; margin-bottom: var(--space-sm);">CSIR</h3>
+          <p style="color: var(--text-secondary);">Certified Training Programs</p>
+          <span style="font-size: var(--text-xs); color: var(--light-green);">CMERI & BARC Standards</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Footer Links Grid -->
+        <div class="footer-links-grid">
+          <!-- Column 1: Company -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Company</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="technology.html">Technology</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Solutions -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Solutions</h3>
+            <ul class="footer-links">
+              <li><a href="phases.html">Project Phases</a></li>
+              <li><a href="impact.html">Environmental Impact</a></li>
+              <li><a href="government.html">Government Alignment</a></li>
+              <li><a href="training.html">Training Programs</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Resources -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#programs">Programs</a></li>
+              <li><a href="#workshops">Workshops</a></li>
+              <li><a href="#csir">CSIR Partnership</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Connect -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Connect</h3>
+            <ul class="footer-links">
+              <li><a href="mailto:vrplvns@gmail.com">Email Us</a></li>
+              <li><a href="contact.html">Partner With Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mission Alignment Tags -->
+        <div class="footer-mission-tags">
+          <span class="mission-tag">Samriddh UP 2047</span>
+          <span class="mission-tag">Nari Shakti Mission</span>
+          <span class="mission-tag">Viksit Bharat 2047</span>
+          <span class="mission-tag">SDG Goals 3 & 6</span>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <p>&copy; 2024 Varanasi Recyclers Private Limited. All rights reserved.</p>
+            <div class="footer-legal-links">
+              <a href="coming-soon.html">Privacy Policy</a>
+              <span class="separator">•</span>
+              <a href="coming-soon.html">Terms of Service</a>
+              <span class="separator">•</span>
+              <a href="coming-soon.html">Accessibility</a>
+            </div>
+          </div>
+
+          <div class="footer-stats">
+            <div class="footer-stat">
+              <span class="stat-badge">DPIIT Certified</span>
+            </div>
+            <div class="footer-stat">
+              <span class="stat-badge">CSIR-CMERI Partner</span>
+            </div>
+            <div class="footer-stat">
+              <span class="stat-badge">BARC Technology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/navigation.js"></script>
+  <script src="js/scroll-observer.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/link-handler.js"></script>
+
+</body>
+</html>
