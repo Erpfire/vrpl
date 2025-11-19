@@ -65,10 +65,10 @@
         'technology.html',
         'phases.html',
         'impact.html',
-        'government.html',
-        'training.html',
         'contact.html',
-        'coming-soon.html'
+        'coming-soon.html',
+        'government.html',
+        'training.html'
       ];
 
       // If page is not in our existing pages list, redirect to coming soon
