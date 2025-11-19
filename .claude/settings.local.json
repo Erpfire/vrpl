@@ -6,7 +6,10 @@
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
       "Bash(git add:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: VRPL website - Waste-to-Energy platform\n\n- Complete responsive website for Varanasi Recyclers Private Limited\n- Plasma gasification technology showcase\n- Bio-industrial fusion design system\n- Docker deployment ready\n- Pages: Home, About, Technology, Phases, Impact\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

@@ -496,9 +496,22 @@
   font-weight: var(--weight-black);
   color: var(--copper-medium);
   text-shadow: 0 0 20px rgba(167, 200, 161, 0.5);
-  display: block;
+  display: inline-block;
   margin-bottom: var(--space-sm);
   font-variant-numeric: tabular-nums;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs) var(--space-md);
+  transition: all var(--transition-base);
+}
+
+.stat-number:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(200, 159, 128, 0.5);
+  box-shadow: 0 0 20px rgba(156, 106, 74, 0.3);
 }
 
 .stat-label {
