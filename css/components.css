@@ -347,30 +347,19 @@
   gap: var(--space-sm);
 }
 
-.connector-line {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--copper-medium), var(--light-green));
-  position: relative;
+.connector-svg {
+  overflow: visible;
 }
 
-.connector-line::after {
-  content: '';
-  position: absolute;
-  right: -2px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  background: var(--light-green);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+.pulsing-dot {
+  animation: connectorPulse 2s infinite;
+  transform-origin: center;
 }
 
-.connector-arrow {
-  font-size: var(--text-2xl);
-  color: var(--copper-light);
-  font-weight: var(--weight-bold);
+@keyframes connectorPulse {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 10px var(--light-green); }
+  100% { transform: scale(0.8); opacity: 0.5; }
 }
 
 @keyframes pulse {
