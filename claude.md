@@ -832,7 +832,7 @@ The navigation follows the Redwood Materials pattern with these key features:
       <div class="column">
         <div class="stats-panel">
           <div class="stat-block">
-            <h3 class="stat-number-large">2024</h3>
+            <h3 class="stat-number-large">2025</h3>
             <p>Year Established</p>
           </div>
           <div class="stat-block">
@@ -3198,7 +3198,7 @@ docker-compose up -d
 
 ## License
 
-Proprietary - © 2024 Varanasi Recyclers Private Limited
+Proprietary - © 2025 Varanasi Recyclers Private Limited
 
 ## Contact
 

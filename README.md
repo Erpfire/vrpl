@@ -325,7 +325,7 @@ docker --version
 
 ## License
 
-Proprietary - © 2024 Varanasi Recyclers Private Limited
+Proprietary - © 2025 Varanasi Recyclers Private Limited
 
 ## Contact
 
