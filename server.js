@@ -296,8 +296,16 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`
+const initializeDatabase = require('./utils/dbInit');
+const pool = require('./config/database');
+
+// wrapper to run init then start server
+async function startServer() {
+  // Try to initialize DB (create tables if missing)
+  await initializeDatabase(pool);
+
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
 ║   VRPL Website Server                                     ║
@@ -308,8 +316,11 @@ app.listen(PORT, '0.0.0.0', () => {
 ║   Timestamp: ${new Date().toISOString()}        ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
-  `);
-});
+    `);
+  });
+}
+
+startServer();
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
