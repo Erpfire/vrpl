@@ -167,7 +167,7 @@ class BlogPublic {
     this.postsGrid.innerHTML = posts.map(post => `
       <article class="blog-card" data-slug="${this.escapeHtml(post.slug)}">
         <div class="card-image">
-          ${post.cover_image ? `<img src="${post.cover_image}" alt="${this.escapeHtml(post.title)}" loading="lazy">` : ''}
+          ${post.cover_image ? `<img src="${post.cover_image.startsWith('http') || post.cover_image.startsWith('/') ? post.cover_image : '/uploads/blog/' + post.cover_image}" alt="${this.escapeHtml(post.title)}" loading="lazy">` : ''}
           <div class="card-category">${this.escapeHtml(post.category_name || 'Uncategorized')}</div>
         </div>
         <div class="card-content">
@@ -208,7 +208,7 @@ class BlogPublic {
   renderFeatured(post) {
     this.featuredPostEl.innerHTML = `
       <a href="blog-post.html?slug=${post.slug}" class="featured-card">
-        ${post.cover_image ? `<img src="${post.cover_image}" alt="${this.escapeHtml(post.title)}" class="featured-image">` : ''}
+        ${post.cover_image ? `<img src="${post.cover_image.startsWith('http') || post.cover_image.startsWith('/') ? post.cover_image : '/uploads/blog/' + post.cover_image}" alt="${this.escapeHtml(post.title)}" class="featured-image">` : ''}
         <div class="featured-content">
           <span class="featured-badge">⭐ Featured</span>
           <h4>${this.escapeHtml(post.title)}</h4>
@@ -244,7 +244,7 @@ class BlogPublic {
 
       ${post.cover_image ? `
         <figure class="post-hero-image">
-          <img src="${post.cover_image}" alt="${this.escapeHtml(post.title)}">
+          <img src="${post.cover_image.startsWith('http') || post.cover_image.startsWith('/') ? post.cover_image : '/uploads/blog/' + post.cover_image}" alt="${this.escapeHtml(post.title)}">
         </figure>
       ` : ''}
 
