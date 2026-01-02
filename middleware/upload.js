@@ -3,15 +3,8 @@ const path = require('path');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadType = req.body.uploadType || 'cover';
-    let destination = 'uploads/blog';
-
-    if (uploadType === 'cover') {
-      destination = 'uploads/blog/covers';
-    } else if (uploadType === 'content') {
-      destination = 'uploads/blog/content';
-    }
-
+    // Simplify to single directory to match route URL generation
+    const destination = 'uploads/blog';
     cb(null, destination);
   },
   filename: function (req, file, cb) {
