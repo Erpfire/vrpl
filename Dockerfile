@@ -20,7 +20,7 @@ WORKDIR /app
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001
+  adduser -S nodejs -u 1001
 
 # Copy dependencies from builder
 COPY --from=builder /app/node_modules ./node_modules
@@ -30,11 +30,12 @@ COPY --chown=nodejs:nodejs . .
 
 # Create placeholder image directories
 RUN mkdir -p assets/images/hero \
-             assets/images/overlay \
-             assets/images/technology \
-             assets/images/team \
-             assets/images/training \
-             assets/icons
+  assets/images/overlay \
+  assets/images/technology \
+  assets/images/team \
+  assets/images/training \
+  assets/icons \
+  uploads/blog
 
 # Ensure proper permissions
 RUN chown -R nodejs:nodejs /app
@@ -51,7 +52,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
 
 # Set environment variables
 ENV NODE_ENV=production \
-    PORT=3000
+  PORT=3000
 
 # Start the application
 CMD ["node", "server.js"]
