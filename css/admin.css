@@ -400,8 +400,8 @@
 #editor .note-editor .note-editable ul,
 #editor .note-editor .note-editable li,
 #editor .note-editor .note-editable div {
-  background-color: var(--background-dark) !important;
-  color: var(--text-primary) !important;
+  background-color: #ffffff !important;
+  color: #333333 !important;
 }
 
 #editor .note-editor .note-editable {
@@ -409,7 +409,7 @@
 }
 
 .note-placeholder {
-  color: var(--text-secondary) !important;
+  color: #888888 !important;
 }
 
 #editor .ck-editor__toolbar {
