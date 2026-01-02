@@ -750,7 +750,7 @@ The navigation follows the Redwood Materials pattern with these key features:
           <img src="assets/icons/employment.svg" alt="Employment">
         </div>
         <h3>Creates Employment</h3>
-        <p>Local jobs with 50% women workforce target</p>
+        <p>Local jobs with 60% women workforce target</p>
       </div>
 
       <div class="benefit-card">
