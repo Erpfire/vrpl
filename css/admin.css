@@ -394,9 +394,17 @@
   border-radius: var(--radius-md);
 }
 
-#editor .note-editor .note-editable {
+#editor .note-editor .note-editable,
+#editor .note-editor .note-editable p,
+#editor .note-editor .note-editable span,
+#editor .note-editor .note-editable ul,
+#editor .note-editor .note-editable li,
+#editor .note-editor .note-editable div {
   background-color: var(--background-dark) !important;
   color: var(--text-primary) !important;
+}
+
+#editor .note-editor .note-editable {
   min-height: 400px;
 }
 
