@@ -394,10 +394,14 @@
   border-radius: var(--radius-md);
 }
 
-#editor .ck-editor__editable {
-  background: var(--background-dark);
-  color: var(--text-primary);
+#editor .note-editor .note-editable {
+  background-color: var(--background-dark) !important;
+  color: var(--text-primary) !important;
   min-height: 400px;
+}
+
+.note-placeholder {
+  color: var(--text-secondary) !important;
 }
 
 #editor .ck-editor__toolbar {
@@ -416,6 +420,7 @@
   align-items: center;
   gap: var(--space-sm);
   cursor: pointer;
+  color: var(--text-primary);
 }
 
 .checkbox-label input[type="checkbox"] {
