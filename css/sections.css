@@ -276,6 +276,7 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
+  object-position: center 25%;
   border-radius: 50%;
   border: 3px solid var(--copper-medium);
   box-shadow: 0 0 30px var(--copper-glow);
