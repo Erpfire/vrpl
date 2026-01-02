@@ -514,6 +514,14 @@
   font-weight: var(--weight-medium);
   cursor: pointer;
   transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.share-icon {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
 }
 
 .share-btn.facebook {

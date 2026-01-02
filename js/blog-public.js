@@ -253,17 +253,62 @@ class BlogPublic {
       <div class="post-footer">
         <div class="share-section">
           <h3>Share this post</h3>
-          <div class="share-buttons">
-            <button class="share-btn facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Share on Facebook</button>
-            <button class="share-btn twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('${post.title}') + '&url=' + encodeURIComponent(window.location.href), '_blank')">Share on Twitter</button>
-            <button class="share-btn linkedin" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank')">Share on LinkedIn</button>
-            <button class="share-btn whatsapp" onclick="window.open('https://wa.me/?text=' + encodeURIComponent('${post.title}') + ' ' + encodeURIComponent(window.location.href), '_blank')">Share on WhatsApp</button>
+          <div class="share-buttons" id="shareButtons">
+            <button class="share-btn facebook" data-platform="facebook">
+              <span class="share-icon">f</span>
+              Share on Facebook
+            </button>
+            <button class="share-btn twitter" data-platform="twitter">
+              <span class="share-icon">𝕏</span>
+              Share on Twitter
+            </button>
+            <button class="share-btn linkedin" data-platform="linkedin">
+              <span class="share-icon">in</span>
+              Share on LinkedIn
+            </button>
+            <button class="share-btn whatsapp" data-platform="whatsapp">
+              <span class="share-icon">📱</span>
+              Share on WhatsApp
+            </button>
           </div>
         </div>
       </div>
     `;
 
+    this.setupShareButtons(post);
     this.loadComments(post.id);
+  }
+
+  setupShareButtons(post) {
+    const shareButtonsContainer = document.getElementById('shareButtons');
+    if (!shareButtonsContainer) return;
+
+    const currentUrl = encodeURIComponent(window.location.href);
+    const postTitle = encodeURIComponent(post.title);
+    const postDescription = encodeURIComponent(post.excerpt || post.title);
+
+    const shareUrls = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
+      twitter: `https://twitter.com/intent/tweet?text=${postTitle}&url=${currentUrl}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`,
+      whatsapp: `https://wa.me/?text=${postTitle}%20${currentUrl}`
+    };
+
+    shareButtonsContainer.querySelectorAll('.share-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const platform = button.getAttribute('data-platform');
+        const url = shareUrls[platform];
+
+        if (url) {
+          if (platform === 'whatsapp') {
+            window.location.href = url;
+          } else {
+            const windowFeatures = 'width=600,height=400,menubar=no,toolbar=no,scrollbars=yes,resizable=yes';
+            window.open(url, '_blank', windowFeatures);
+          }
+        }
+      });
+    });
   }
 
   async loadComments(postId) {
