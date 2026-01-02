@@ -1,10 +1,18 @@
 const multer = require('multer');
 const path = require('path');
 
+const fs = require('fs');
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // Simplify to single directory to match route URL generation
     const destination = 'uploads/blog';
+
+    // Ensure directory exists (crucial when using Docker volumes which might start empty)
+    if (!fs.existsSync(destination)) {
+      fs.mkdirSync(destination, { recursive: true });
+    }
+
     cb(null, destination);
   },
   filename: function (req, file, cb) {
