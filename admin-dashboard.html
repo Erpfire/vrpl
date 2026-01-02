@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - VRPL</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <h2>VRPL Admin</h2>
+        <p>Blog Management</p>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="sidebar-link active">Dashboard</a>
+        <a href="admin-create-post.html" class="sidebar-link">Create Post</a>
+        <!-- <a href="admin-categories.html" class="sidebar-link">Categories</a>
+        <a href="admin-comments.html" class="sidebar-link">Comments</a>
+        <a href="admin-settings.html" class="sidebar-link">Settings</a> -->
+        <a href="index.html" class="sidebar-link">View Site</a>
+        <a href="#" class="sidebar-link admin-logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Dashboard</h1>
+        <div class="header-actions">
+          <span class="admin-name">Welcome, Admin</span>
+        </div>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-content">
+            <h3 id="totalPosts">0</h3>
+            <p>Total Posts</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-content">
+            <h3 id="publishedPosts">0</h3>
+            <p>Published</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📄</div>
+          <div class="stat-content">
+            <h3 id="draftPosts">0</h3>
+            <p>Drafts</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💬</div>
+          <div class="stat-content">
+            <h3 id="pendingComments">0</h3>
+            <p>Pending Comments</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-actions">
+        <a href="admin-create-post.html" class="btn-copper">Create New Post</a>
+      </div>
+
+      <div class="posts-section">
+        <h2>Recent Posts</h2>
+        <div id="postsList" class="posts-list">
+          <p class="loading-text">Loading posts...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+</body>
+
+</html>

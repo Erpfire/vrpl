@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Post - VRPL</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <h2>VRPL Admin</h2>
+        <p>Blog Management</p>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="admin-create-post.html" class="sidebar-link active">Create Post</a>
+        <a href="admin-categories.html" class="sidebar-link">Categories</a>
+        <a href="admin-comments.html" class="sidebar-link">Comments</a>
+        <a href="admin-settings.html" class="sidebar-link">Settings</a>
+        <a href="index.html" class="sidebar-link">View Site</a>
+        <a href="#" class="sidebar-link admin-logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Create New Post</h1>
+        <div class="header-actions">
+          <span class="admin-name">Welcome, Admin</span>
+        </div>
+      </header>
+
+      <form id="postForm" class="post-form">
+        <div class="form-section">
+          <h2>Basic Information</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="title">Title *</label>
+              <input type="text" id="title" name="title" class="form-input" placeholder="Enter post title" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="slug">Slug</label>
+              <input type="text" id="slug" name="slug" class="form-input" placeholder="url-friendly-slug" readonly>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="excerpt">Excerpt</label>
+            <textarea id="excerpt" name="excerpt" class="form-textarea" rows="3"
+              placeholder="Brief description (will auto-generate from content if empty)"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="category">Category</label>
+              <select id="category" name="category" class="form-select">
+                <option value="">Select category</option>
+                <option value="1">Technology</option>
+                <option value="2">Environment</option>
+                <option value="3">Updates</option>
+                <option value="4">News</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="tags">Tags</label>
+              <input type="text" id="tags" name="tags" class="form-input"
+                placeholder="Comma-separated tags (e.g., technology, waste, energy)">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Cover Image</h2>
+
+          <div class="image-upload-area" id="imageUploadArea">
+            <input type="file" id="coverImage" name="coverImage" accept="image/jpeg,image/png,image/webp"
+              style="display: none;">
+            <div class="upload-placeholder" id="uploadPlaceholder">
+              <div class="upload-icon">📷</div>
+              <p>Click to upload cover image</p>
+              <p class="upload-hint">Maximum 5MB, JPEG/PNG/WebP</p>
+            </div>
+            <div class="image-preview" id="imagePreview" style="display: none;">
+              <img src="" alt="Cover preview" id="previewImage">
+              <button type="button" class="btn-remove-image" onclick="removeCoverImage()">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Content</h2>
+
+          <div class="form-group">
+            <label class="form-label">Post Content *</label>
+            <div id="editor-container">
+              <div id="editor"></div>
+            </div>
+
+            <div class="editor-help"
+              style="margin-top: 16px; padding: 16px; background: rgba(156, 106, 74, 0.1); border-left: 3px solid #C89F80; border-radius: 4px;">
+              <h4 style="margin-top: 0; color: #C89F80;">🎨 Formatting Features:</h4>
+              <ul style="color: #DCD7D0; line-height: 1.6;">
+                <li><strong>Text Color:</strong> Click "A" icon to change text color - use color names or hex codes</li>
+                <li><strong>Background Color:</strong> Click highlighter icon to add background highlight</li>
+                <li><strong>Links:</strong> Select text and click chain icon 🔗</li>
+                <li><strong>Alignment:</strong> Left/Center/Right buttons available</li>
+              </ul>
+              <p style="color: #C7C7C7; font-size: 14px; margin-top: 12px; margin-bottom: 0;">
+                <strong>VRPL Theme Colors:</strong><br>
+                Copper Highlight: <span style="color: #C89F80; font-weight: bold;">#C89F80</span> | Green Accent: <span
+                  style="color: #A7C8A1; font-weight: bold;">#A7C8A1</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Publishing Options</h2>
+
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="published" name="published">
+              <span>Publish immediately</span>
+            </label>
+
+            <label class="checkbox-label">
+              <input type="checkbox" id="featured" name="featured">
+              <span>Mark as featured</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-copper" id="submitBtn">
+            Create Post
+          </button>
+          <a href="admin-dashboard.html" class="btn-outline">Cancel</a>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <!-- Summernote Editor CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/summernote.min.css" rel="stylesheet">
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/summernote.min.js"></script>
+
+  <script src="js/admin-auth.js?v=3"></script>
+  <script src="js/admin-blog-summernote.js"></script>
+</body>
+
+</html>

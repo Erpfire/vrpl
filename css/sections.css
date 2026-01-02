@@ -960,6 +960,17 @@
   }
 }
 
+/* Workshop Highlight */
+.workshop-highlight {
+  color: var(--copper-light);
+  font-weight: var(--weight-semibold);
+  border-left: 3px solid var(--copper-medium);
+  padding-left: var(--space-md);
+  background: rgba(156, 106, 74, 0.1);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: var(--space-md) !important;
+}
+
 /* Alignment Cards */
 .alignment-card {
   background: rgba(46, 46, 46, 0.5);

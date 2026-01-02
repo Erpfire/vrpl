@@ -25,7 +25,7 @@ PROCESS_JOURNEY_HTML = '''
               <img src="assets/images/process/waste-input.jpg" alt="Waste Input Stage" class="journey-image">
             </div>
             <h3>Waste Input</h3>
-            <p>MSW, plastic, biomedical, and hazardous waste received and sorted</p>
+            <p>MSW, plastic, and hazardous waste received and sorted</p>
           </div>
 
           <div class="journey-arrow">→</div>

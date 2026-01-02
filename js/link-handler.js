@@ -68,7 +68,8 @@
         'contact.html',
         'coming-soon.html',
         'government.html',
-        'training.html'
+        'training.html',
+        'startupwork.html'
       ];
 
       // If page is not in our existing pages list, redirect to coming soon

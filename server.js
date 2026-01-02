@@ -6,17 +6,17 @@ const compression = require('compression');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "https://stackpath.bootstrapcdn.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://stackpath.bootstrapcdn.com"],
       imgSrc: ["'self'", "data:", "https:"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://code.jquery.com", "https://stackpath.bootstrapcdn.com", "https://cdn.jsdelivr.net"],
       connectSrc: ["'self'"]
     }
   }
@@ -35,18 +35,37 @@ app.use((req, res, next) => {
 
 // Static files - serve from root directory
 app.use(express.static(path.join(__dirname), {
-  maxAge: '1d',
-  etag: true,
+  maxAge: '0',
+  etag: false,
   lastModified: true
 }));
 
 // Specific static file routes with longer cache
-app.use('/css', express.static(path.join(__dirname, 'css'), { maxAge: '7d' }));
-app.use('/js', express.static(path.join(__dirname, 'js'), { maxAge: '7d' }));
-app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: '30d' }));
+app.use('/css', express.static(path.join(__dirname, 'css'), { maxAge: '0' }));
+app.use('/js', express.static(path.join(__dirname, 'js'), { maxAge: '0' }));
+app.use('/assets', express.static(path.join(__dirname, 'assets'), { maxAge: '0' }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'), { maxAge: '0' }));
 
 // API Routes
 const apiRouter = express.Router();
+
+// Import new routes
+const authRoutes = require('./routes/auth');
+const blogAdminRoutes = require('./routes/blogAdmin');
+const blogPublicRoutes = require('./routes/blogPublic');
+const commentRoutes = require('./routes/comments');
+
+// Mount auth routes
+apiRouter.use('/auth', authRoutes);
+
+// Mount blog admin routes (protected)
+apiRouter.use('/admin', blogAdminRoutes);
+
+// Mount blog public routes
+apiRouter.use('/blog', blogPublicRoutes);
+
+// Mount comment routes
+apiRouter.use('/comments', commentRoutes);
 
 // Health check endpoint
 apiRouter.get('/health', (req, res) => {
@@ -222,6 +241,44 @@ app.get('/training', (req, res) => {
 
 app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname, 'contact.html'));
+});
+
+// Admin routes
+app.get('/admin-login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-login.html'));
+});
+
+app.get('/admin-dashboard.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-dashboard.html'));
+});
+
+app.get('/admin-create-post.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-create-post.html'));
+});
+
+app.get('/admin-edit-post.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-edit-post.html'));
+});
+
+app.get('/admin-categories.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-categories.html'));
+});
+
+app.get('/admin-comments.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-comments.html'));
+});
+
+app.get('/admin-settings.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-settings.html'));
+});
+
+// Blog routes
+app.get('/blog.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog.html'));
+});
+
+app.get('/blog-post.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'blog-post.html'));
 });
 
 // 404 handler - serve custom 404 page or redirect to home

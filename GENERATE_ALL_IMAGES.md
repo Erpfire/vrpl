@@ -257,7 +257,7 @@ Professional photograph of diverse team of Indian scientists and engineers colla
 ```
 VRPL Waste Input Stage:
 
-Well-organized industrial waste sorting and input facility. Various types of sorted waste materials (plastic, MSW, biomedical) in separate clean modern containers. Copper-accented industrial sorting equipment and conveyor systems. Clean organized warehouse environment, professional waste management operation. Beginning of transformation journey. Industrial facility photography, photorealistic, 4:3 aspect ratio.
+Well-organized industrial waste sorting and input facility. Various types of sorted waste materials (plastic, MSW) in separate clean modern containers. Copper-accented industrial sorting equipment and conveyor systems. Clean organized warehouse environment, professional waste management operation. Beginning of transformation journey. Industrial facility photography, photorealistic, 4:3 aspect ratio.
 ```
 **Save as:** `assets/images/process/waste-input.jpg`
 

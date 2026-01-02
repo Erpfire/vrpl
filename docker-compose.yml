@@ -1,6 +1,26 @@
 version: '3.8'
 
 services:
+  postgres:
+    profiles: [ "local" ]
+    image: postgres:15-alpine
+    container_name: vrpl-postgres
+    environment:
+      POSTGRES_DB: vrpl_db
+      POSTGRES_USER: vrpl_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vrpl_password_123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U vrpl_user" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   vrpl-website:
     build:
       context: .
@@ -9,26 +29,32 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - PORT=3000
       - TZ=Asia/Kolkata
+      - DATABASE_URL=${DATABASE_URL:-postgresql://vrpl_user:vrpl_password_123@postgres:5432/vrpl_db}
+      - JWT_SECRET=${JWT_SECRET:-vrpl_jwt_secret_change_in_production_2025}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-ChangeMe123!}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@vrpl.com}
       # Email configuration (uncomment and configure when ready)
       # - EMAIL_USER=${EMAIL_USER}
       # - EMAIL_PASSWORD=${EMAIL_PASSWORD}
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
-      interval: 30s
-      timeout: 3s
-      retries: 3
-      start_period: 10s
+    # healthcheck:
+    #   test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "-O", "/dev/null", "http://0.0.0.0:3000/api/health"]
+    #   interval: 30s
+    #   timeout: 3s
+    #   retries: 3
+    #   start_period: 10s
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     # Volume mounts for development (comment out in production)
-    # volumes:
-    #   - ./:/app
-    #   - /app/node_modules
-
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - ./uploads:/app/uploads
   # Optional: Nginx reverse proxy for production
   # Uncomment if you want Nginx in front of Express for SSL/caching
   # nginx:
@@ -44,3 +70,6 @@ services:
   #   depends_on:
   #     - vrpl-website
   #   restart: unless-stopped
+
+volumes:
+  postgres_data:

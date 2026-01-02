@@ -484,3 +484,71 @@
     gap: var(--space-md);
   }
 }
+
+/* ========================================
+    TRIPS SECTION (Startup Work Page)
+    ======================================== */
+
+.trips-section {
+  padding: var(--space-4xl) 0;
+}
+
+.trips-single-column {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+.trip-item {
+  background: rgba(46, 46, 46, 0.5);
+  border: 1px solid rgba(156, 106, 74, 0.3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.trip-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--copper-light);
+  box-shadow: 0 0 40px rgba(156, 106, 74, 0.3);
+}
+
+.trip-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.trip-item:hover .trip-image {
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trips-section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .trips-single-column {
+    gap: var(--space-2xl);
+  }
+
+  .trip-item {
+    border-radius: var(--radius-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .trips-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .trips-single-column {
+    gap: var(--space-lg);
+  }
+}
