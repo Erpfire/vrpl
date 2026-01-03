@@ -23,6 +23,22 @@ router.get('/posts', authMiddleware, async (req, res) => {
   }
 });
 
+router.get('/posts/list', authMiddleware, async (req, res) => {
+  try {
+    const posts = await Blog.findAll({ columns: ['id', 'title', 'slug'] });
+    res.json({
+      success: true,
+      data: posts
+    });
+  } catch (error) {
+    console.error('Get posts list error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch posts'
+    });
+  }
+});
+
 router.get('/posts/:id', authMiddleware, async (req, res) => {
   try {
     const post = await Blog.findById(req.params.id);

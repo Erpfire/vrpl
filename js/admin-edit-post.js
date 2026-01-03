@@ -80,6 +80,19 @@ class PostEditor {
         if (this.postForm) {
             this.postForm.addEventListener('submit', (e) => this.handleSubmit(e));
         }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.dataset.action === 'remove-cover') {
+                this.removeCoverImage();
+            }
+        });
+    }
+
+    removeCoverImage() {
+        coverImageFilename = '';
+        if (this.coverImageInput) this.coverImageInput.value = '';
+        if (this.uploadPlaceholder) this.uploadPlaceholder.style.display = 'block';
+        if (this.imagePreview) this.imagePreview.style.display = 'none';
     }
 
     async loadPostData(id) {
@@ -292,13 +305,6 @@ class PostEditor {
             }
         }
     }
-}
-
-function removeCoverImage() {
-    coverImageFilename = '';
-    document.getElementById('coverImage').value = '';
-    document.getElementById('uploadPlaceholder').style.display = 'block';
-    document.getElementById('imagePreview').style.display = 'none';
 }
 
 // Initialize on page load

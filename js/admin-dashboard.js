@@ -15,27 +15,45 @@ class AdminDashboard {
       return;
     }
 
+    this.bindEventDelegation();
     this.loadStats();
     this.loadPosts();
+  }
+
+  bindEventDelegation() {
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target.tagName === 'BUTTON' && target.dataset.action === 'delete-post') {
+        this.deletePost(parseInt(target.dataset.id), target.dataset.title);
+      }
+    });
   }
 
   async loadStats() {
     try {
       const token = AdminSession.getToken();
-      const response = await fetch('/api/admin/posts', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
 
-      const data = await response.json();
+      const [postsResponse, commentsResponse] = await Promise.all([
+        fetch('/api/admin/posts', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }),
+        fetch('/api/comments/admin/comments', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+      ]);
 
-      if (data.success) {
-        const posts = data.data;
+      const postsData = await postsResponse.json();
+      const commentsData = await commentsResponse.json();
 
+      if (postsData.success) {
+        const posts = postsData.data;
         this.totalPostsEl.textContent = posts.length;
         this.publishedPostsEl.textContent = posts.filter(p => p.published).length;
         this.draftPostsEl.textContent = posts.filter(p => !p.published).length;
+      }
+
+      if (commentsData.success) {
+        this.pendingCommentsEl.textContent = commentsData.data.pending.length;
       }
     } catch (error) {
       console.error('Error loading stats:', error);
@@ -84,49 +102,49 @@ class AdminDashboard {
             </span>
             <span>${new Date(post.created_at).toLocaleDateString()}</span>
             <span>${post.view_count} views</span>
-            ${post.featured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+            ${post.featured ? '<span class="featured-badge">Featured</span>' : ''}
           </div>
         </div>
         <div class="post-actions">
           <a href="admin-edit-post.html?id=${post.id}" class="btn-edit">Edit</a>
-          <button onclick="deletePost(${post.id}, '${this.escapeHtml(post.title)}')" class="btn-delete">Delete</button>
+          <button class="btn-delete" data-action="delete-post" data-id="${post.id}" data-title="${this.escapeHtml(post.title)}">Delete</button>
         </div>
       </div>
     `).join('');
+  }
+
+  async deletePost(id, title) {
+    if (!confirm(`Are you sure you want to delete "${title}"?`)) {
+      return;
+    }
+
+    try {
+      const token = AdminSession.getToken();
+      const response = await fetch(`/api/admin/posts/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Post deleted successfully');
+        location.reload();
+      } else {
+        alert('Failed to delete post: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert('An error occurred while deleting the post');
+    }
   }
 
   escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
-  }
-}
-
-async function deletePost(id, title) {
-  if (!confirm(`Are you sure you want to delete "${title}"?`)) {
-    return;
-  }
-
-  try {
-    const token = AdminSession.getToken();
-    const response = await fetch(`/api/admin/posts/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      alert('Post deleted successfully');
-      location.reload();
-    } else {
-      alert('Failed to delete post: ' + data.error);
-    }
-  } catch (error) {
-    console.error('Error deleting post:', error);
-    alert('An error occurred while deleting the post');
   }
 }
 

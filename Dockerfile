@@ -54,5 +54,5 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
 ENV NODE_ENV=production \
   PORT=3000
 
-# Start the application
-CMD ["node", "server.js"]
+# Start the application with migrations
+CMD ["npm", "run", "start:prod"]

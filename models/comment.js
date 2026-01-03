@@ -38,6 +38,136 @@ class Comment {
     return result.rows;
   }
 
+  static async findPendingWithPagination({ limit, offset, postId, dateFrom, dateTo, search }) {
+    let conditions = ['c.approved = false'];
+    const params = [];
+    let paramIndex = 1;
+
+    if (postId) {
+      conditions.push(`c.post_id = $${paramIndex}`);
+      params.push(postId);
+      paramIndex++;
+    }
+
+    if (dateFrom) {
+      conditions.push(`c.created_at >= $${paramIndex}`);
+      params.push(dateFrom);
+      paramIndex++;
+    }
+
+    if (dateTo) {
+      conditions.push(`c.created_at <= $${paramIndex}`);
+      params.push(dateTo + ' 23:59:59');
+      paramIndex++;
+    }
+
+    if (search) {
+      conditions.push(`(
+        LOWER(c.name) LIKE LOWER($${paramIndex}) OR
+        LOWER(c.email) LIKE LOWER($${paramIndex}) OR
+        LOWER(c.comment) LIKE LOWER($${paramIndex})
+      )`);
+      params.push(`%${search}%`);
+      paramIndex++;
+    }
+
+    const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+
+    const countQuery = `
+      SELECT COUNT(*) as total, COUNT(*) as pending_count
+      FROM blog_comments c
+      ${whereClause}
+    `;
+    const countResult = await pool.query(countQuery, params);
+    const total = parseInt(countResult.rows[0].total);
+    const pendingCount = parseInt(countResult.rows[0].pending_count);
+
+    const dataQuery = `
+      SELECT
+        c.*,
+        bp.title as post_title,
+        bp.slug as post_slug
+      FROM blog_comments c
+      JOIN blog_posts bp ON c.post_id = bp.id
+      ${whereClause}
+      ORDER BY c.created_at DESC
+      LIMIT $${paramIndex} OFFSET $${paramIndex + 1}
+    `;
+    params.push(limit, offset);
+    const result = await pool.query(dataQuery, params);
+
+    return {
+      comments: result.rows,
+      total,
+      pendingCount
+    };
+  }
+
+  static async findApprovedWithPagination({ limit, offset, postId, dateFrom, dateTo, search }) {
+    let conditions = ['c.approved = true'];
+    const params = [];
+    let paramIndex = 1;
+
+    if (postId) {
+      conditions.push(`c.post_id = $${paramIndex}`);
+      params.push(postId);
+      paramIndex++;
+    }
+
+    if (dateFrom) {
+      conditions.push(`c.created_at >= $${paramIndex}`);
+      params.push(dateFrom);
+      paramIndex++;
+    }
+
+    if (dateTo) {
+      conditions.push(`c.created_at <= $${paramIndex}`);
+      params.push(dateTo + ' 23:59:59');
+      paramIndex++;
+    }
+
+    if (search) {
+      conditions.push(`(
+        LOWER(c.name) LIKE LOWER($${paramIndex}) OR
+        LOWER(c.email) LIKE LOWER($${paramIndex}) OR
+        LOWER(c.comment) LIKE LOWER($${paramIndex})
+      )`);
+      params.push(`%${search}%`);
+      paramIndex++;
+    }
+
+    const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+
+    const countQuery = `
+      SELECT COUNT(*) as total, COUNT(*) as approved_count
+      FROM blog_comments c
+      ${whereClause}
+    `;
+    const countResult = await pool.query(countQuery, params);
+    const total = parseInt(countResult.rows[0].total);
+    const approvedCount = parseInt(countResult.rows[0].approved_count);
+
+    const dataQuery = `
+      SELECT
+        c.*,
+        bp.title as post_title,
+        bp.slug as post_slug
+      FROM blog_comments c
+      JOIN blog_posts bp ON c.post_id = bp.id
+      ${whereClause}
+      ORDER BY c.created_at DESC
+      LIMIT $${paramIndex} OFFSET $${paramIndex + 1}
+    `;
+    params.push(limit, offset);
+    const result = await pool.query(dataQuery, params);
+
+    return {
+      comments: result.rows,
+      total,
+      approvedCount
+    };
+  }
+
   static async create(commentData) {
     const { post_id, name, email, comment } = commentData;
     const result = await pool.query(

@@ -2,27 +2,41 @@ const pool = require('../config/database');
 const slugify = require('slugify');
 
 class Blog {
-  static async findAll(limit = 10, offset = 0) {
-    const result = await pool.query(`
-      SELECT
-        bp.id,
-        bp.title,
-        bp.slug,
-        bp.excerpt,
-        bp.cover_image,
-        bp.tags,
-        bp.featured,
-        bp.created_at,
-        bp.published_at,
-        bp.view_count,
-        bc.name as category_name,
-        bc.slug as category_slug
-      FROM blog_posts bp
-      LEFT JOIN blog_categories bc ON bp.category_id = bc.id
-      WHERE bp.published = true
-      ORDER BY bp.published_at DESC
-      LIMIT $1 OFFSET $2
-    `, [limit, offset]);
+  static async findAll(options = {}) {
+    const { columns = ['*'], publishedOnly = true, orderBy = 'published_at', limit, offset } = options;
+
+    const validColumns = ['id', 'title', 'slug', 'excerpt', 'cover_image', 'tags', 'featured', 'created_at', 'published_at', 'view_count', 'category_name', 'category_slug', 'published'];
+    const selectColumns = columns.some(c => c === '*')
+      ? `
+        SELECT
+          bp.id,
+          bp.title,
+          bp.slug,
+          bp.excerpt,
+          bp.cover_image,
+          bp.tags,
+          bp.featured,
+          bp.created_at,
+          bp.published_at,
+          bp.view_count,
+          bp.published,
+          bc.name as category_name,
+          bc.slug as category_slug
+        FROM blog_posts bp
+        LEFT JOIN blog_categories bc ON bp.category_id = bc.id`
+      : `SELECT ${columns.join(', ')} FROM blog_posts`;
+
+    const whereClause = publishedOnly ? 'WHERE published = true' : '';
+    const orderClause = `ORDER BY ${orderBy} DESC`;
+    const limitClause = limit ? `LIMIT $1 OFFSET $2` : '';
+
+    const query = `${selectColumns}
+      ${whereClause}
+      ${orderClause}
+      ${limitClause}
+    `;
+
+    const result = limit ? await pool.query(query, [limit, offset]) : await pool.query(query);
     return result.rows;
   }
 

@@ -33,6 +33,7 @@ class BlogPublic {
   }
 
   async loadPosts(categorySlug = null) {
+    console.log('loadPosts called with category:', categorySlug);
     if (this.loading) return;
 
     this.loading = true;
@@ -316,25 +317,46 @@ class BlogPublic {
       const urlParams = new URLSearchParams(window.location.search);
       const slug = urlParams.get('slug');
 
+      const commentsSection = document.createElement('section');
+      commentsSection.className = 'comments-section';
+      commentsSection.id = 'commentsSection';
+      commentsSection.innerHTML = `
+        <h3>Comments</h3>
+        <p class="loading-text" id="commentsLoading">Loading comments...</p>
+      `;
+
+      const postContent = document.getElementById('postContent');
+      postContent.appendChild(commentsSection);
+
       const response = await fetch(`/api/comments/posts/${slug}/comments`);
       const data = await response.json();
 
       if (data.success) {
-        this.renderComments(data.data);
+        this.renderComments(data.data, postContent);
       }
     } catch (error) {
       console.error('Error loading comments:', error);
+      const commentsSection = document.getElementById('commentsSection');
+      if (commentsSection) {
+        commentsSection.innerHTML = `
+          <h3>Comments</h3>
+          <p class="error-state">Unable to load comments. Please try again later.</p>
+        `;
+      }
     }
   }
 
-  renderComments(comments) {
-    const postContent = document.getElementById('postContent');
+  renderComments(comments, postContent = null) {
+    if (!postContent) {
+      postContent = document.getElementById('postContent');
+    }
 
+    const commentsCount = comments.length;
     const commentsHTML = `
-      <section class="comments-section">
-        <h3>Comments (${comments.length})</h3>
+      <section class="comments-section" id="commentsSection">
+        <h3>Comments (${commentsCount})</h3>
 
-        ${comments.length === 0 ? '<p class="no-comments">No comments yet. Be the first to comment!</p>' : ''}
+        ${commentsCount === 0 ? '<p class="no-comments">No comments yet. Be the first to comment!</p>' : ''}
 
         <div class="comments-list">
           ${comments.map(comment => `
@@ -350,17 +372,19 @@ class BlogPublic {
 
         <form id="commentForm" class="comment-form">
           <h3>Leave a Comment</h3>
-          <div class="form-group">
-            <label for="commentName">Name *</label>
-            <input type="text" id="commentName" name="name" class="form-input" required>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="commentName" class="form-label">Name *</label>
+              <input type="text" id="commentName" name="name" class="form-input" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="commentEmail" class="form-label">Email *</label>
+              <input type="email" id="commentEmail" name="email" class="form-input" required placeholder="your@email.com">
+            </div>
           </div>
           <div class="form-group">
-            <label for="commentEmail">Email *</label>
-            <input type="email" id="commentEmail" name="email" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label for="commentText">Comment *</label>
-            <textarea id="commentText" name="comment" class="form-textarea" rows="5" required></textarea>
+            <label for="commentText" class="form-label">Comment *</label>
+            <textarea id="commentText" name="comment" class="form-textarea" rows="5" required placeholder="Share your thoughts..."></textarea>
           </div>
           <button type="submit" class="btn-copper">Submit Comment</button>
           <p class="form-hint">Your comment will be reviewed before being published.</p>
@@ -368,7 +392,12 @@ class BlogPublic {
       </section>
     `;
 
-    postContent.insertAdjacentHTML('beforeend', commentsHTML);
+    const existingSection = document.getElementById('commentsSection');
+    if (existingSection) {
+      existingSection.outerHTML = commentsHTML;
+    } else {
+      postContent.insertAdjacentHTML('beforeend', commentsHTML);
+    }
 
     document.getElementById('commentForm').addEventListener('submit', (e) => this.handleSubmitComment(e));
   }
@@ -384,6 +413,29 @@ class BlogPublic {
       email: document.getElementById('commentEmail').value.trim(),
       comment: document.getElementById('commentText').value.trim()
     };
+
+    // Frontend validation
+    if (!formData.name || formData.name.length < 2) {
+      alert('Name must be at least 2 characters long');
+      return;
+    }
+    if (!formData.email || !formData.email.includes('@') || !formData.email.includes('.')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (!formData.comment || formData.comment.length < 10) {
+      alert('Comment must be at least 10 characters long');
+      return;
+    }
+    if (formData.comment.length > 2000) {
+      alert('Comment must be less than 2000 characters');
+      return;
+    }
+
+    const submitBtn = document.querySelector('#commentForm button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
 
     try {
       const response = await fetch(`/api/comments/posts/${slug}/comments`, {
@@ -402,7 +454,10 @@ class BlogPublic {
       }
     } catch (error) {
       console.error('Error submitting comment:', error);
-      alert('An error occurred while submitting your comment');
+      alert('An error occurred while submitting your comment. Please check your connection and try again.');
+    } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
     }
   }
 
@@ -481,5 +536,10 @@ function changePage(page) {
 }
 
 if (document.getElementById('postsGrid') || document.getElementById('postContent')) {
+  console.log('Initializing BlogPublic...');
   new BlogPublic();
+} else {
+  console.log('BlogPublic NOT initialized - elements not found');
+  console.log('postsGrid exists:', !!document.getElementById('postsGrid'));
+  console.log('postContent exists:', !!document.getElementById('postContent'));
 }

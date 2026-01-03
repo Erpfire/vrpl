@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Comments - VRPL Admin</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <h2>VRPL Admin</h2>
+        <p>Blog Management</p>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="admin-create-post.html" class="sidebar-link">Create Post</a>
+        <a href="admin-comments.html" class="sidebar-link active">Comments</a>
+        <a href="index.html" class="sidebar-link">View Site</a>
+        <a href="#" class="sidebar-link admin-logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Manage Comments</h1>
+        <div class="header-actions">
+          <span class="admin-name">Welcome, Admin</span>
+        </div>
+      </header>
+
+      <div class="comments-container">
+        <div class="comments-filters">
+          <div class="filter-group">
+            <label for="postsFilter">Filter by Post:</label>
+            <select id="postsFilter" class="filter-select">
+              <option value="">All Posts</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="dateFilter">Date Range:</label>
+            <input type="date" id="dateFrom" class="filter-input" placeholder="From">
+            <span>to</span>
+            <input type="date" id="dateTo" class="filter-input" placeholder="To">
+          </div>
+          <div class="filter-group">
+            <label for="searchFilter">Search:</label>
+            <input type="text" id="searchFilter" class="filter-input" placeholder="Search name, email, comment...">
+          </div>
+          <button id="applyFilters" class="btn-filter">Apply Filters</button>
+          <button id="clearFilters" class="btn-filter btn-secondary">Clear</button>
+        </div>
+
+        <div class="comments-section">
+          <div class="section-header">
+            <h2>Pending Comments <span id="pendingCount" class="badge">0</span></h2>
+            <div class="pagination-controls" id="pendingPagination">
+              <span class="pagination-info">Showing <span id="pendingStart">0</span>-<span id="pendingEnd">0</span> of <span id="pendingTotal">0</span></span>
+              <div class="pagination-buttons">
+                <button class="btn-page" id="pendingPrev" disabled>&lt; Prev</button>
+                <span class="page-numbers" id="pendingPageNumbers"></span>
+                <button class="btn-page" id="pendingNext">Next &gt;</button>
+              </div>
+              <select class="page-size-select" id="pendingPageSize">
+                <option value="10">10 per page</option>
+                <option value="25" selected>25 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+              </select>
+            </div>
+          </div>
+          <div id="pendingCommentsList" class="comments-list">
+            <p class="loading-text">Loading comments...</p>
+          </div>
+        </div>
+
+        <div class="comments-section">
+          <div class="section-header">
+            <h2>Approved Comments <span id="approvedCount" class="badge approved">0</span></h2>
+            <div class="pagination-controls" id="approvedPagination">
+              <span class="pagination-info">Showing <span id="approvedStart">0</span>-<span id="approvedEnd">0</span> of <span id="approvedTotal">0</span></span>
+              <div class="pagination-buttons">
+                <button class="btn-page" id="approvedPrev" disabled>&lt; Prev</button>
+                <span class="page-numbers" id="approvedPageNumbers"></span>
+                <button class="btn-page" id="approvedNext">Next &gt;</button>
+              </div>
+              <select class="page-size-select" id="approvedPageSize">
+                <option value="10">10 per page</option>
+                <option value="25" selected>25 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+              </select>
+            </div>
+          </div>
+          <div id="approvedCommentsList" class="comments-list">
+            <p class="loading-text">Loading comments...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-comments.js"></script>
+</body>
+
+</html>
