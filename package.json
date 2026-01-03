@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:prod": "node-pg-migrate up && node server.js",
+    "start:prod": "node scripts/start-safe.js",
     "dev": "nodemon server.js",
     "docker:build": "docker build -t vrpl-website .",
     "docker:run": "docker-compose up -d",
