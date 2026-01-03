@@ -44,6 +44,9 @@ class PostEditor {
     }
 
     initEditor() {
+        // Set dark theme styles for editor
+        this.applyDarkThemeStyles();
+
         $('#editor').summernote({
             placeholder: 'Write your blog post content here...',
             tabsize: 2,
@@ -59,12 +62,125 @@ class PostEditor {
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['fullscreen', 'codeview', 'help']]
             ],
+            colors: [
+                ['#000000', '#1C1C1C', '#2E2E2E', '#434343', '#666666', '#999999', '#CCCCCC', '#DCD7D0', '#FFFFFF'],
+                ['#C89F80', '#A7C8A1', '#9C6A4A', '#6A3E2C', '#496D53', '#1C3B2C', '#FF6B6B', '#4ECDC4', '#45B7D1']
+            ],
+            defaultForeColor: '#DCD7D0',
+            defaultBackColor: '#1C1C1C',
             callbacks: {
                 onImageUpload: (files) => {
                     this.uploadImageToEditor(files[0]);
                 }
             }
         });
+    }
+
+    applyDarkThemeStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            /* Dark Theme for Summernote Editor */
+            .note-editor.note-frame {
+                background-color: #2E2E2E !important;
+                border: 1px solid #496D53 !important;
+            }
+            .note-editor.note-frame .note-editing-area {
+                background-color: #1C1C1C !important;
+                color: #DCD7D0 !important;
+            }
+            .note-editor.note-frame .note-editing-area .note-editable {
+                background-color: #1C1C1C !important;
+                color: #DCD7D0 !important;
+            }
+            .note-toolbar {
+                background-color: #2E2E2E !important;
+                border-bottom: 1px solid #496D53 !important;
+            }
+            .note-toolbar .note-btn {
+                background-color: #434343 !important;
+                color: #DCD7D0 !important;
+                border: 1px solid #496D53 !important;
+            }
+            .note-toolbar .note-btn:hover {
+                background-color: #496D53 !important;
+                color: #FFFFFF !important;
+            }
+            .note-toolbar .note-btn.active {
+                background-color: #496D53 !important;
+                color: #C89F80 !important;
+            }
+            .note-dropdown-menu {
+                background-color: #2E2E2E !important;
+                border: 1px solid #496D53 !important;
+            }
+            .note-dropdown-menu a {
+                color: #DCD7D0 !important;
+            }
+            .note-dropdown-menu a:hover {
+                background-color: #496D53 !important;
+                color: #FFFFFF !important;
+            }
+            .note-color-palette {
+                background-color: #2E2E2E !important;
+            }
+            .note-color-palette .note-color-btn {
+                border: 1px solid #434343 !important;
+            }
+            .note-modal-content {
+                background-color: #2E2E2E !important;
+                color: #DCD7D0 !important;
+            }
+            .note-modal-header {
+                background-color: #1C1C1C !important;
+                border-bottom: 1px solid #496D53 !important;
+            }
+            .note-modal-body {
+                background-color: #2E2E2E !important;
+            }
+            .note-modal-body label {
+                color: #DCD7D0 !important;
+            }
+            .note-form-group {
+                color: #DCD7D0 !important;
+            }
+            .note-input {
+                background-color: #1C1C1C !important;
+                border: 1px solid #496D53 !important;
+                color: #DCD7D0 !important;
+            }
+            .note-modal-footer {
+                background-color: #1C1C1C !important;
+                border-top: 1px solid #496D53 !important;
+            }
+            .note-modal-footer .btn-primary {
+                background-color: #496D53 !important;
+                border-color: #496D53 !important;
+                color: #FFFFFF !important;
+            }
+            .note-modal-footer .btn-default {
+                background-color: #434343 !important;
+                border-color: #434343 !important;
+                color: #DCD7D0 !important;
+            }
+            .note-statusbar {
+                background-color: #1C1C1C !important;
+                border-top: 1px solid #496D53 !important;
+            }
+            .note-resizebar {
+                background-color: #2E2E2E !important;
+            }
+            /* Table styling in editor */
+            .note-editable table {
+                background-color: #2E2E2E !important;
+                color: #DCD7D0 !important;
+            }
+            .note-editable table td,
+            .note-editable table th {
+                border: 1px solid #496D53 !important;
+                color: #DCD7D0 !important;
+            }
+        `;
+        document.head.appendChild(style);
     }
 
     setupEventListeners() {
