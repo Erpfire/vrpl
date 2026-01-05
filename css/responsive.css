@@ -47,7 +47,7 @@
 
   /* Adjust header */
   .header-container {
-    padding: var(--space-md) var(--space-lg);
+    padding: 0 var(--space-lg);
   }
 
   /* Process flow becomes vertical */
@@ -113,11 +113,12 @@
 
   /* Header */
   .header-container {
-    padding: var(--space-sm) var(--space-md);
+    padding: 0 var(--space-md);
   }
 
-  .header-logo img {
-    height: 32px;
+  .header-logo img,
+  .header-logo-img {
+    height: 50px;
   }
 
   /* Hero section */
