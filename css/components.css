@@ -774,6 +774,38 @@
   letter-spacing: 0.05em;
 }
 
+.footer-logo-image {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-bottom: var(--space-sm);
+  filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(978%) hue-rotate(334deg) brightness(87%) contrast(87%);
+}
+
+.footer-logo-image-small {
+  display: inline-block;
+  width: 80px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: var(--space-sm);
+  filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(978%) hue-rotate(334deg) brightness(87%) contrast(87%);
+}
+
+.footer-brand-simple {
+  text-align: center;
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid rgba(156, 106, 74, 0.2);
+  margin-bottom: var(--space-xl);
+}
+
+.footer-brand-text {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--copper-light);
+  letter-spacing: 0.05em;
+}
+
 .footer-tagline {
   font-size: var(--text-lg);
   color: var(--text-secondary);

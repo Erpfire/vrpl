@@ -20,7 +20,8 @@
       "Bash(python add_css_link.py:*)",
       "Bash(python fix_stat_numbers.py:*)",
       "Bash(python adjust_stat_glow.py:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []
