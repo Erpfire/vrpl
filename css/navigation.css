@@ -27,22 +27,26 @@
 .header-container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--space-md) var(--space-xl);
+  padding: var(--space-sm) var(--space-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .header-logo img {
-  height: 36px;
+  height: 75px;
   width: auto;
   object-fit: contain;
+  margin: 0;
+  padding: 0;
 }
 
 .header-logo-img {
-  height: 36px;
+  height: 75px;
   width: auto;
   object-fit: contain;
+  margin: 0;
+  padding: 0;
 }
 
 /* ========================================
