@@ -122,6 +122,10 @@
   text-transform: uppercase;
   position: relative;
   padding: var(--space-sm) var(--space-xl);
+  background: rgba(46, 46, 46, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(156, 106, 74, 0.2);
 }
 
 .hero-tagline::before,
