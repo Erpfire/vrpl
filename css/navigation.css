@@ -18,6 +18,7 @@
   border-bottom: 1px solid rgba(156, 106, 74, 0.3);
   transform: translateY(-100%);
   transition: transform var(--transition-base);
+  padding: var(--space-xs) 0;
 }
 
 .main-header.visible {
@@ -27,7 +28,7 @@
 .header-container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--space-sm) var(--space-xl);
+  padding: 0 var(--space-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -370,7 +371,7 @@
 
 @media (max-width: 768px) {
   .header-container {
-    padding: var(--space-sm) var(--space-md);
+    padding: 0 var(--space-md);
   }
 
   .overlay-content {
