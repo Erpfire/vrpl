@@ -776,16 +776,18 @@
 
 .footer-logo-image {
   display: block;
-  width: 120px;
-  height: auto;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   margin-bottom: var(--space-sm);
   filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(978%) hue-rotate(334deg) brightness(87%) contrast(87%);
 }
 
 .footer-logo-image-small {
   display: inline-block;
-  width: 80px;
-  height: auto;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
   vertical-align: middle;
   margin-right: var(--space-sm);
   filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(978%) hue-rotate(334deg) brightness(87%) contrast(87%);
