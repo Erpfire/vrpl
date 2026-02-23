@@ -1,31 +1,44 @@
 require('dotenv').config();
 
-if (process.env.DATABASE_URL) {
-    const { exec } = require('child_process');
+async function main() {
+    const ensureDatabase = require('./init-db');
 
-    console.log('🔄 Application Startup: Checking for database migrations...');
+    // Step 1: Auto-create database if POSTGRES_HOST is set
+    if (!process.env.DATABASE_URL && process.env.POSTGRES_HOST) {
+        await ensureDatabase();
+    }
 
-    const migrationProcess = exec('npm run migrate:up', (error, stdout, stderr) => {
-        if (error) {
-            console.error('⚠️  Migration Warning: Database migration failed or timed out.');
-            console.error('   This might be due to connection issues or config errors.');
-            console.error('   Proceeding to start server anyway to ensure uptime.');
-            console.error('   Error details:', stderr || error.message);
-        } else {
-            console.log('✅ Database migrations applied successfully.');
-            if (stdout) console.log(stdout);
-        }
+    // Step 2: Run migrations if we have a DATABASE_URL (either set directly or by init-db)
+    if (process.env.DATABASE_URL) {
+        await new Promise((resolve) => {
+            const { exec } = require('child_process');
+            console.log('🔄 Running database migrations...');
 
-        // Always start the server, regardless of migration success/failure
-        console.log('🚀 Starting Server...');
-        require('../server.js');
-    });
+            const migrationProcess = exec('npm run migrate:up', (error, stdout, stderr) => {
+                if (error) {
+                    console.warn('⚠️  Migration warning:', stderr || error.message);
+                    console.warn('   Proceeding to start server anyway.');
+                } else {
+                    console.log('✅ Database migrations applied.');
+                    if (stdout) console.log(stdout);
+                }
+                resolve();
+            });
 
-    // Pipe migration output to console for visibility
-    migrationProcess.stdout.pipe(process.stdout);
-    migrationProcess.stderr.pipe(process.stderr);
-} else {
-    console.log('ℹ️  No DATABASE_URL set — skipping migrations.');
-    console.log('🚀 Starting Server in static-only mode...');
+            migrationProcess.stdout.pipe(process.stdout);
+            migrationProcess.stderr.pipe(process.stderr);
+        });
+    } else {
+        console.log('ℹ️  No database configured — starting in static-only mode.');
+    }
+
+    // Step 3: Start the server
+    console.log('🚀 Starting Server...');
     require('../server.js');
 }
+
+main().catch((err) => {
+    console.error('❌ Startup error:', err.message);
+    console.log('🚀 Starting Server anyway...');
+    require('../server.js');
+});

@@ -297,11 +297,12 @@ app.use((err, req, res, next) => {
 
 // Start server
 const initializeDatabase = require('./utils/dbInit');
-const pool = require('./config/database');
+const { getPool } = require('./config/database');
 
 // wrapper to run init then start server
 async function startServer() {
   // Try to initialize DB (create tables if missing)
+  const pool = getPool();
   if (pool) {
     try {
       await initializeDatabase(pool);
