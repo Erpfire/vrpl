@@ -1,4 +1,4 @@
-const pool = require('../config/database');
+const { getPool } = require('../config/database');
 const slugify = require('slugify');
 
 class Blog {
@@ -36,12 +36,12 @@ class Blog {
       ${limitClause}
     `;
 
-    const result = limit ? await pool.query(query, [limit, offset]) : await pool.query(query);
+    const result = limit ? await getPool().query(query, [limit, offset]) : await getPool().query(query);
     return result.rows;
   }
 
   static async findById(id) {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.*,
         bc.name as category_name,
@@ -54,7 +54,7 @@ class Blog {
   }
 
   static async findBySlug(slug) {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.*,
         bc.name as category_name,
@@ -67,7 +67,7 @@ class Blog {
   }
 
   static async findAllAdmin(includeDrafts = true) {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.id,
         bp.title,
@@ -89,7 +89,7 @@ class Blog {
   }
 
   static async findByCategory(categorySlug, limit = 10, offset = 0) {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.id,
         bp.title,
@@ -110,7 +110,7 @@ class Blog {
   }
 
   static async findByTag(tag, limit = 10, offset = 0) {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.id,
         bp.title,
@@ -130,7 +130,7 @@ class Blog {
 
   static async search(query, limit = 10, offset = 0) {
     const searchQuery = `%${query}%`;
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.id,
         bp.title,
@@ -150,7 +150,7 @@ class Blog {
   }
 
   static async getFeatured() {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         bp.id,
         bp.title,
@@ -186,7 +186,7 @@ class Blog {
 
     const publishedAt = published ? new Date() : null;
 
-    const result = await pool.query(`
+    const result = await getPool().query(`
       INSERT INTO blog_posts (title, slug, excerpt, content, cover_image, category_id, tags, featured, published, author_id, published_at)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
       RETURNING *
@@ -208,7 +208,7 @@ class Blog {
       published
     } = postData;
 
-    const result = await pool.query(`
+    const result = await getPool().query(`
       UPDATE blog_posts
       SET title = $1,
           slug = $2,
@@ -229,7 +229,7 @@ class Blog {
   }
 
   static async delete(id) {
-    const result = await pool.query(
+    const result = await getPool().query(
       'DELETE FROM blog_posts WHERE id = $1 RETURNING *',
       [id]
     );
@@ -237,14 +237,14 @@ class Blog {
   }
 
   static async incrementViewCount(id) {
-    await pool.query(
+    await getPool().query(
       'UPDATE blog_posts SET view_count = view_count + 1 WHERE id = $1',
       [id]
     );
   }
 
   static async getTotalCount() {
-    const result = await pool.query(
+    const result = await getPool().query(
       'SELECT COUNT(*) as count FROM blog_posts WHERE published = true'
     );
     return parseInt(result.rows[0].count);

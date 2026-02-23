@@ -1,7 +1,6 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// This module is loaded after start-safe.js may have set DATABASE_URL dynamically
 let pool = null;
 
 function getPool() {
@@ -25,15 +24,7 @@ function getPool() {
   return pool;
 }
 
-// Export a proxy that lazily initializes the pool
-// This way it picks up DATABASE_URL even if set after this module is first required
-module.exports = new Proxy({}, {
-  get(_, prop) {
-    const p = getPool();
-    if (!p) return undefined;
-    const val = p[prop];
-    return typeof val === 'function' ? val.bind(p) : val;
-  }
-});
+// Initialize immediately if DATABASE_URL is already set
+getPool();
 
-module.exports.getPool = getPool;
+module.exports = { getPool };

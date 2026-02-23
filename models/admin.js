@@ -1,9 +1,9 @@
-const pool = require('../config/database');
+const { getPool } = require('../config/database');
 const bcrypt = require('bcryptjs');
 
 class Admin {
   static async findByUsername(username) {
-    const result = await pool.query(
+    const result = await getPool().query(
       'SELECT id, username, password_hash, email, created_at FROM admins WHERE username = $1',
       [username]
     );
@@ -11,7 +11,7 @@ class Admin {
   }
 
   static async findById(id) {
-    const result = await pool.query(
+    const result = await getPool().query(
       'SELECT id, username, email, created_at FROM admins WHERE id = $1',
       [id]
     );
@@ -20,7 +20,7 @@ class Admin {
 
   static async updatePassword(id, newPassword) {
     const passwordHash = await bcrypt.hash(newPassword, 10);
-    await pool.query(
+    await getPool().query(
       `UPDATE admins
        SET password_hash = $1, updated_at = CURRENT_TIMESTAMP
        WHERE id = $2`,
@@ -29,7 +29,7 @@ class Admin {
   }
 
   static async updateEmail(id, email) {
-    await pool.query(
+    await getPool().query(
       `UPDATE admins
        SET email = $1, updated_at = CURRENT_TIMESTAMP
        WHERE id = $2`,

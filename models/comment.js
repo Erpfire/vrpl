@@ -1,8 +1,8 @@
-const pool = require('../config/database');
+const { getPool } = require('../config/database');
 
 class Comment {
   static async findByPostId(postId, approvedOnly = true) {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT * FROM blog_comments
       WHERE post_id = $1 ${approvedOnly ? 'AND approved = true' : ''}
       ORDER BY created_at DESC
@@ -11,7 +11,7 @@ class Comment {
   }
 
   static async findAllPending() {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         c.*,
         bp.title as post_title,
@@ -25,7 +25,7 @@ class Comment {
   }
 
   static async findAllApproved() {
-    const result = await pool.query(`
+    const result = await getPool().query(`
       SELECT
         c.*,
         bp.title as post_title,
@@ -78,7 +78,7 @@ class Comment {
       FROM blog_comments c
       ${whereClause}
     `;
-    const countResult = await pool.query(countQuery, params);
+    const countResult = await getPool().query(countQuery, params);
     const total = parseInt(countResult.rows[0].total);
     const pendingCount = parseInt(countResult.rows[0].pending_count);
 
@@ -94,7 +94,7 @@ class Comment {
       LIMIT $${paramIndex} OFFSET $${paramIndex + 1}
     `;
     params.push(limit, offset);
-    const result = await pool.query(dataQuery, params);
+    const result = await getPool().query(dataQuery, params);
 
     return {
       comments: result.rows,
@@ -143,7 +143,7 @@ class Comment {
       FROM blog_comments c
       ${whereClause}
     `;
-    const countResult = await pool.query(countQuery, params);
+    const countResult = await getPool().query(countQuery, params);
     const total = parseInt(countResult.rows[0].total);
     const approvedCount = parseInt(countResult.rows[0].approved_count);
 
@@ -159,7 +159,7 @@ class Comment {
       LIMIT $${paramIndex} OFFSET $${paramIndex + 1}
     `;
     params.push(limit, offset);
-    const result = await pool.query(dataQuery, params);
+    const result = await getPool().query(dataQuery, params);
 
     return {
       comments: result.rows,
@@ -170,7 +170,7 @@ class Comment {
 
   static async create(commentData) {
     const { post_id, name, email, comment } = commentData;
-    const result = await pool.query(
+    const result = await getPool().query(
       'INSERT INTO blog_comments (post_id, name, email, comment) VALUES ($1, $2, $3, $4) RETURNING *',
       [post_id, name, email, comment]
     );
@@ -178,7 +178,7 @@ class Comment {
   }
 
   static async approve(id) {
-    const result = await pool.query(
+    const result = await getPool().query(
       'UPDATE blog_comments SET approved = true WHERE id = $1 RETURNING *',
       [id]
     );
@@ -186,7 +186,7 @@ class Comment {
   }
 
   static async unapprove(id) {
-    const result = await pool.query(
+    const result = await getPool().query(
       'UPDATE blog_comments SET approved = false WHERE id = $1 RETURNING *',
       [id]
     );
@@ -194,7 +194,7 @@ class Comment {
   }
 
   static async delete(id) {
-    const result = await pool.query(
+    const result = await getPool().query(
       'DELETE FROM blog_comments WHERE id = $1 RETURNING *',
       [id]
     );
@@ -202,7 +202,7 @@ class Comment {
   }
 
   static async getPendingCount() {
-    const result = await pool.query(
+    const result = await getPool().query(
       'SELECT COUNT(*) as count FROM blog_comments WHERE approved = false'
     );
     return parseInt(result.rows[0].count);
