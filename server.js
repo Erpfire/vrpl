@@ -302,7 +302,16 @@ const pool = require('./config/database');
 // wrapper to run init then start server
 async function startServer() {
   // Try to initialize DB (create tables if missing)
-  await initializeDatabase(pool);
+  if (pool) {
+    try {
+      await initializeDatabase(pool);
+    } catch (err) {
+      console.warn('⚠️  Database initialization failed — server will start without DB features.');
+      console.warn('   Error:', err.message);
+    }
+  } else {
+    console.log('ℹ️  No database configured — starting in static-only mode.');
+  }
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`
